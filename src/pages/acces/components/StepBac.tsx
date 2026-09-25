@@ -10,12 +10,13 @@ export interface BacFormValues {
 interface StepBacProps {
   values: BacFormValues;
   erreur: string;
+  enCours?: boolean;
   onChange: (patch: Partial<BacFormValues>) => void;
   onSubmit: () => void;
   onRetour: () => void;
 }
 const ANNEES = ["2026", "2025", "2024"];
-export default function StepBac({ values, erreur, onChange, onSubmit, onRetour }: StepBacProps) {
+export default function StepBac({ values, erreur, enCours, onChange, onSubmit, onRetour }: StepBacProps) {
   const { t } = useTranslation();
   const submit = (event: FormEvent) => {
     event.preventDefault();
@@ -122,10 +123,11 @@ export default function StepBac({ values, erreur, onChange, onSubmit, onRetour }
         </button>
         <button
           type="submit"
-          className="inline-flex flex-1 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md bg-primary-500 px-5 py-3.5 text-sm font-semibold text-background-50 transition-colors hover:bg-primary-600"
+          disabled={enCours}
+          className="inline-flex flex-1 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md bg-primary-500 px-5 py-3.5 text-sm font-semibold text-background-50 transition-colors hover:bg-primary-600 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          <i className="ri-search-eye-line text-base"></i>
-          {t("acces.verifyBac")}
+          <i className={`${enCours ? "ri-loader-4-line animate-spin" : "ri-search-eye-line"} text-base`}></i>
+          {enCours ? "Vérification en cours…" : t("acces.verifyBac")}
         </button>
       </div>
     </form>

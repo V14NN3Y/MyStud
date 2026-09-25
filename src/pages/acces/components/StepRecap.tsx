@@ -33,6 +33,16 @@ export default function StepRecap({ profil, onConfirm, onRetour }: StepRecapProp
           <p className="text-xs text-foreground-600">{t("acces.resultatBac")}</p>
         </div>
       </div>
+      <p className="flex items-start gap-2 rounded-md bg-background-100 p-3 text-[11px] leading-relaxed text-foreground-600">
+        <i className="ri-shield-keyhole-line mt-0.5 text-base text-primary-600"></i>
+        <span>
+          Identité vérifiée côté serveur — jeton NPI{" "}
+          <code className="rounded bg-background-200 px-1 py-0.5 font-mono">
+            {profil.npiToken.slice(0, 12)}…
+          </code>
+          . Un e-mail de confirmation a été envoyé à {profil.email}.
+        </span>
+      </p>
       <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {lignes.map((ligne) => (
           <div key={ligne.label} className="rounded-lg border border-background-200 bg-background-100 p-3">

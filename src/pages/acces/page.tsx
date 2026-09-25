@@ -10,6 +10,7 @@ import StepCode from "./components/StepCode";
 import StepBac, { type BacFormValues } from "./components/StepBac";
 import StepRecap from "./components/StepRecap";
 import useDemoSession, { creerProfilDemo, type BacInfo, type ProfilDemo } from "@/hooks/useDemoSession";
+import { tokenizeNpi, ApiError } from "@/lib/api";
 const ETAPES = [
   { titre: "Identité NPI", icone: "ri-fingerprint-line" },
   { titre: "Code à usage unique", icone: "ri-lock-password-line" },
@@ -32,6 +33,7 @@ export default function Acces() {
   });
   const [profil, setProfil] = useState<ProfilDemo | null>(null);
   const [erreur, setErreur] = useState("");
+  const [verificationEnCours, setVerificationEnCours] = useState(false);
   const genererCode = () => String(Math.floor(100000 + Math.random() * 900000));
   const envoyerCode = () => {
     if (npi.length < 10) {
@@ -54,7 +56,7 @@ export default function Acces() {
     setErreur("");
     setEtape(3);
   };
-  const verifierBac = () => {
+  const verifierBac = async () => {
     if (!bacValues.numeroTable.trim()) {
       setErreur("Le numéro de table est obligatoire.");
       return;
@@ -68,16 +70,32 @@ export default function Acces() {
       return;
     }
     setErreur("");
-    const bac: BacInfo = {
-      serie: bacValues.serie,
-      annee: bacValues.annee,
-      numeroTable: bacValues.numeroTable,
-      mention: "",
-      statut: "Vérifié — office du baccalauréat",
-      priseEnCharge: "",
-    };
-    setProfil(creerProfilDemo(npi, telephone, bac));
-    setEtape(4);
+    setVerificationEnCours(true);
+    try {
+      // Real round-trip to the backend: the NPI is tokenized server-side
+      // (HMAC, never stored raw) and, as a side effect, a confirmation
+      // e-mail goes out to the address just entered — see
+      // server/src/routes/identity.ts and server/README.md.
+      const { npiToken } = await tokenizeNpi(npi, bacValues.email);
+      const bac: BacInfo = {
+        serie: bacValues.serie,
+        annee: bacValues.annee,
+        numeroTable: bacValues.numeroTable,
+        mention: "",
+        statut: "Vérifié — office du baccalauréat",
+        priseEnCharge: "",
+      };
+      setProfil(creerProfilDemo(npi, telephone, bac, bacValues.email, npiToken));
+      setEtape(4);
+    } catch (error) {
+      setErreur(
+        error instanceof ApiError
+          ? error.message
+          : "Impossible de joindre le serveur de vérification. Réessayez dans un instant."
+      );
+    } finally {
+      setVerificationEnCours(false);
+    }
   };
   const confirmer = () => {
     if (!profil) return;
@@ -133,6 +151,7 @@ export default function Acces() {
                     <StepBac
                       values={bacValues}
                       erreur={erreur}
+                      enCours={verificationEnCours}
                       onChange={(patch) => {
                         setErreur("");
                         setBacValues((prev) => ({ ...prev, ...patch }));
