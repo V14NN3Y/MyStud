@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /espace
+Disallow: /notifications
+Disallow: /ministere
+Disallow: /universite
+
+Sitemap: https://mystud.bj/sitemap.xml
