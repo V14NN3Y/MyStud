@@ -1,10 +1,9 @@
-import { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { I18nextProvider } from "react-i18next";
 import { AppRoutes } from "./router";
 import i18n from "./i18n";
-import { DemoSessionProvider } from "@/hooks/useDemoSession";
-import { NotificationsProvider } from "@/hooks/useNotifications";
+import { DemoSessionProvider } from "@/hooks/DemoSessionProvider";
+import { NotificationsProvider } from "@/hooks/NotificationsProvider";
 import useScrollReveal from "@/hooks/useScrollReveal";
 import CompareBar from "@/components/feature/CompareBar";
 function AppShell() {
