@@ -1,1 +1,54 @@
-// TODO
+export const etapesBourse = [
+  { key: "soumise", labelKey: "bsuivi.etape.soumise", descKey: "bsuivi.etape.soumiseDesc", icon: "ri-send-plane-line" },
+  { key: "etude", labelKey: "bsuivi.etape.etude", descKey: "bsuivi.etape.etudeDesc", icon: "ri-search-eye-line" },
+  { key: "complement", labelKey: "bsuivi.etape.complement", descKey: "bsuivi.etape.complementDesc", icon: "ri-file-warning-line" },
+  { key: "decision", labelKey: "bsuivi.etape.decision", descKey: "bsuivi.etape.decisionDesc", icon: "ri-award-line" },
+  { key: "paiement", labelKey: "bsuivi.etape.paiement", descKey: "bsuivi.etape.paiementDesc", icon: "ri-bank-card-line" },
+  { key: "cloture", labelKey: "bsuivi.etape.cloture", descKey: "bsuivi.etape.clotureDesc", icon: "ri-checkbox-circle-line" },
+];
+export const candidaturesBourseSeed = [
+  {
+    id: "cb-1",
+    programmeId: "bourse-bac",
+    programme: "Bourse nationale du nouveau bachelier",
+    organisme: "Ministère de l'Enseignement Supérieur",
+    montant: "Prise en charge complète",
+    reference: "MYSTUD-BRS-2026-004871",
+    statut: "etude",
+    montantAccorde: "—",
+    dateDepot: "4 septembre 2026",
+    majLe: "16 septembre 2026",
+    message: "Votre dossier est en cours d'instruction par le service des bourses.",
+  },
+  {
+    id: "cb-2",
+    programmeId: "aide-sociale",
+    programme: "Aide sociale étudiante",
+    organisme: "Ministère des Affaires Sociales",
+    montant: "Jusqu'à 25 000 FCFA / mois",
+    reference: "MYSTUD-BRS-2026-004986",
+    statut: "complement",
+    montantAccorde: "—",
+    dateDepot: "28 août 2026",
+    majLe: "12 septembre 2026",
+    message: "Une pièce complémentaire est demandée pour poursuivre l'instruction de votre demande.",
+  },
+  {
+    id: "cb-3",
+    programmeId: "bourse-excellence",
+    programme: "Bourse d'excellence académique",
+    organisme: "Ministère de l'Enseignement Supérieur",
+    montant: "Mention + frais de mobilité",
+    reference: "MYSTUD-BRS-2026-003112",
+    statut: "paiement",
+    montantAccorde: "150 000 FCFA / trimestre",
+    dateDepot: "12 juillet 2026",
+    majLe: "9 septembre 2026",
+    message: "Votre bourse a été acceptée. Le mandat de paiement a été transmis à la trésorerie.",
+  },
+];
+export const piecesComplementairesBourse = [
+  { id: "piece-1", label: "Attestation de situation sociale", requis: true },
+  { id: "piece-2", label: "Justificatif de domicile", requis: true },
+  { id: "piece-3", label: "Relevé d'identité bancaire (facultatif)", requis: false },
+];
