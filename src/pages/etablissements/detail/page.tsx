@@ -9,8 +9,10 @@ import EtabInfoCard from "./components/EtabInfoCard";
 import { etablissements } from "@/mocks/etablissements";
 import { facultes } from "@/mocks/facultes";
 import { formations } from "@/mocks/formations";
+import useDemoSession from "@/hooks/useDemoSession";
 export default function EtablissementDetail() {
   const { t } = useTranslation();
+  const { identifie } = useDemoSession();
   const { id } = useParams();
   const etablissement = etablissements.find((e) => e.id === id);
   if (!etablissement) {
@@ -205,7 +207,7 @@ export default function EtablissementDetail() {
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
-                to="/acces"
+                to={identifie ? "/espace" : "/acces"}
                 className="inline-flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-md bg-primary-500 px-5 py-3 text-sm font-semibold text-background-50 transition-colors hover:bg-primary-600"
               >
                 <i className="ri-user-line text-base"></i>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import NotificationBell from "@/components/feature/NotificationBell";
+import useDemoSession from "@/hooks/useDemoSession";
 const NAV_LINKS = [
   { to: "/formations", key: "nav.formations" },
   { to: "/etablissements", key: "nav.etablissements" },
@@ -12,6 +13,8 @@ const NAV_LINKS = [
 export default function PortalNavbar() {
   const { t } = useTranslation();
   const location = useLocation();
+  const { identifie } = useDemoSession();
+  const espaceLink = identifie ? "/espace" : "/acces";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const isHome = location.pathname === "/";
@@ -80,7 +83,7 @@ export default function PortalNavbar() {
           <div className="flex items-center gap-2">
             <NotificationBell solid={solid} />
             <Link
-              to="/acces"
+              to={espaceLink}
               className={`hidden cursor-pointer items-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors sm:inline-flex ${
                 solid
                   ? "bg-primary-500 text-background-50 hover:bg-primary-600"
@@ -122,7 +125,7 @@ export default function PortalNavbar() {
               </NavLink>
             ))}
             <Link
-              to="/acces"
+              to={espaceLink}
               className="mt-2 inline-flex cursor-pointer items-center justify-center gap-2 rounded-md bg-primary-500 px-4 py-3 text-sm font-semibold whitespace-nowrap text-background-50"
             >
               <i className="ri-user-line text-base"></i>

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import useDemoSession from "@/hooks/useDemoSession";
 export default function CtaSection() {
   const { t } = useTranslation();
+  const { identifie } = useDemoSession();
   return (
     <section className="w-full bg-background-50 px-4 py-14 md:px-6 md:py-20">
       <div className="mx-auto w-full max-w-6xl">
@@ -19,7 +21,7 @@ export default function CtaSection() {
             </div>
             <div className="flex w-full flex-col gap-3 sm:flex-row lg:w-auto">
               <Link
-                to="/acces"
+                to={identifie ? "/espace" : "/acces"}
                 className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md bg-accent-500 px-6 py-3 text-sm font-semibold text-primary-950 transition-colors hover:bg-accent-400"
               >
                 <i className="ri-user-add-line text-base"></i>
