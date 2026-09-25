@@ -1,1 +1,124 @@
-// TODO
+// Notifications et assistance (section 14 du cahier des charges).
+// Trois canaux : portail, SMS, e-mail. Les alertes de sécurité et certaines échéances
+// administratives restent obligatoires. Aucun envoi réel n'est effectué en démonstration.
+export const canauxNotification = [
+  {
+    id: "portail",
+    nom: "Portail MyStud",
+    icon: "ri-notification-3-line",
+    obligatoire: true,
+    description: "Canal de référence : chaque événement est archivé dans votre portail, même si un autre canal échoue.",
+  },
+  {
+    id: "sms",
+    nom: "SMS",
+    icon: "ri-smartphone-line",
+    obligatoire: false,
+    description: "Utilisé pour les alertes urgentes et les échéances proches, sur le numéro associé à votre NPI.",
+  },
+  {
+    id: "email",
+    nom: "E-mail",
+    icon: "ri-mail-line",
+    obligatoire: false,
+    description: "Pour les documents, les décisions de candidature et les publications de bourses.",
+  },
+];
+export const evenementsPrioritaires = [
+  { id: "identite", label: "Validation de l'identité", icon: "ri-shield-check-line", canalDefaut: "Portail + SMS" },
+  { id: "bac", label: "Fin de vérification du baccalauréat", icon: "ri-file-check-line", canalDefaut: "Portail + SMS" },
+  { id: "candidature", label: "Dépôt et décision de candidature", icon: "ri-send-plane-line", canalDefaut: "Portail + E-mail" },
+  { id: "complement", label: "Demande de pièce complémentaire", icon: "ri-file-warning-line", canalDefaut: "Portail + E-mail" },
+  { id: "note", label: "Publication d'une note", icon: "ri-bar-chart-box-line", canalDefaut: "Portail" },
+  { id: "examen", label: "Changement urgent d'examen", icon: "ri-alarm-warning-line", canalDefaut: "Portail + SMS" },
+  { id: "bourse", label: "Publication d'une bourse", icon: "ri-hand-coin-line", canalDefaut: "Portail + E-mail" },
+  { id: "document", label: "Génération d'un document", icon: "ri-folder-download-line", canalDefaut: "Portail" },
+];
+export const categoriesNotification = [
+  { id: "identite", nom: "Identité et baccalauréat" },
+  { id: "candidatures", nom: "Candidatures et décisions" },
+  { id: "notes", nom: "Notes et examens" },
+  { id: "bourses", nom: "Bourses et aides" },
+  { id: "documents", nom: "Documents administratifs" },
+  { id: "securite", nom: "Sécurité du compte" },
+];
+// portail, sms, email. verrouille = true => canal obligatoire (sécurité / administratif).
+export const preferencesNotifications = [
+  { categorie: "identite", portail: true, sms: true, email: true, verrouille: true },
+  { categorie: "candidatures", portail: true, sms: true, email: false, verrouille: false },
+  { categorie: "notes", portail: true, sms: false, email: true, verrouille: false },
+  { categorie: "bourses", portail: true, sms: true, email: true, verrouille: false },
+  { categorie: "documents", portail: true, sms: false, email: true, verrouille: false },
+  { categorie: "securite", portail: true, sms: true, email: true, verrouille: true },
+];
+export const historiqueNotifications = [
+  {
+    id: "n-01",
+    titre: "Examen déplacé : Réseaux et systèmes",
+    message: "L'examen du 26 novembre passe de l'Amphi 205 à l'Amphi 210. Présentez-vous 15 minutes avant le début.",
+    categorie: "notes",
+    canal: "Portail",
+    priorite: "haute",
+    date: "Aujourd'hui · 09:12",
+    lu: false,
+    etatEnvoi: "Envoyé",
+  },
+  {
+    id: "n-02",
+    titre: "Candidature transmise à l'EPAC",
+    message: "Votre candidature en Génie Informatique a été transmise à l'établissement pour instruction.",
+    categorie: "candidatures",
+    canal: "Portail",
+    priorite: "normale",
+    date: "Hier · 16:40",
+    lu: true,
+    etatEnvoi: "Envoyé",
+  },
+  {
+    id: "n-03",
+    titre: "Nouvelle bourse publiée",
+    message: "La bourse d'excellence académique est ouverte aux candidatures jusqu'au 30 septembre.",
+    categorie: "bourses",
+    canal: "E-mail",
+    priorite: "normale",
+    date: "12 septembre 2026",
+    lu: true,
+    etatEnvoi: "Envoyé",
+  },
+  {
+    id: "n-04",
+    titre: "Relevé de notes disponible",
+    message: "Votre relevé de notes du semestre 4 est prêt à être téléchargé depuis vos documents.",
+    categorie: "documents",
+    canal: "E-mail",
+    priorite: "normale",
+    date: "10 septembre 2026",
+    lu: false,
+    etatEnvoi: "Envoyé",
+  },
+  {
+    id: "n-05",
+    titre: "Rappel : deuxième tranche des frais",
+    message: "La deuxième tranche des frais de scolarité est due avant le 30 novembre 2026.",
+    categorie: "documents",
+    canal: "SMS",
+    priorite: "normale",
+    date: "8 septembre 2026",
+    lu: false,
+    etatEnvoi: "Échec",
+  },
+  {
+    id: "n-06",
+    titre: "Code de vérification envoyé",
+    message: "Un code à usage unique a été envoyé au numéro associé à votre NPI. Il expire dans 5 minutes.",
+    categorie: "identite",
+    canal: "SMS",
+    priorite: "haute",
+    date: "2 septembre 2026",
+    lu: true,
+    etatEnvoi: "Envoyé",
+  },
+];
+
+
+//  la notification n-01 dit que l’examen passe à l’Amphi 210, alors que dans etudiant.ts, l’examen ex-inf403 (Réseaux et systèmes) est bien en salle “Amphi 205” avec la consigne de déplacement Amphi 210 → Amphi 205. Les deux se contredisent sur le sens du changement de salle (205→210 vs 210→205). Si tu veux que je fasse une passe de cohérence sur ces détails, dis-le.

@@ -1,1 +1,202 @@
-// TODO
+// Espace institutionnel de démonstration (prompt 10) : contrôle des rôles, file de
+// candidatures, décisions académiques, publication et journal d'audit.
+// Les statistiques restent agrégées et anonymisées ; les données sont fictives.
+export const modulesInstitutionnels = [
+  { id: "dashboard", nom: "Tableau de bord", icon: "ri-dashboard-line" },
+  { id: "candidatures", nom: "File de candidatures", icon: "ri-inbox-archive-line" },
+  { id: "formations", nom: "Gestion des formations", icon: "ri-book-2-line" },
+  { id: "publications", nom: "Emploi du temps & examens", icon: "ri-calendar-schedule-line" },
+  { id: "notes", nom: "Validation des notes", icon: "ri-bar-chart-box-line" },
+  { id: "documents", nom: "Documents administratifs", icon: "ri-folder-download-line" },
+  { id: "bourses", nom: "Bourses et aides", icon: "ri-hand-coin-line" },
+  { id: "recruteurs", nom: "Offres et recruteurs", icon: "ri-briefcase-4-line" },
+  { id: "annonces", nom: "Publication d'annonces", icon: "ri-megaphone-line" },
+  { id: "offreCiblee", nom: "Offre ciblée", icon: "ri-focus-3-line" },
+  { id: "roles", nom: "Rôles et habilitations", icon: "ri-shield-user-line" },
+  { id: "audit", nom: "Journal d'audit", icon: "ri-history-line" },
+];
+export const rolesInstitutionnels = [
+  {
+    id: "ministere",
+    nom: "Ministère",
+    icon: "ri-government-line",
+    description: "Pilotage national : campagnes, tableaux de bord agrégés, annonces et contrôle des établissements.",
+    modules: ["dashboard", "bourses", "annonces", "offreCiblee", "audit"],
+  },
+  {
+    id: "direction",
+    nom: "Direction nationale",
+    icon: "ri-organization-chart",
+    description: "Supervision de son périmètre : suivi des candidatures, des bourses et des statistiques.",
+    modules: ["dashboard", "candidatures", "bourses", "audit"],
+  },
+  {
+    id: "universite",
+    nom: "Université",
+    icon: "ri-building-4-line",
+    description: "Gestion des formations, examen des candidatures, décisions, publications et validation des notes.",
+    modules: ["dashboard", "candidatures", "formations", "publications", "notes", "annonces", "audit"],
+  },
+  {
+    id: "faculte",
+    nom: "Faculté",
+    icon: "ri-community-line",
+    description: "Périmètre restreint à ses formations, ses candidatures et ses notes.",
+    modules: ["dashboard", "candidatures", "formations", "notes"],
+  },
+  {
+    id: "scolarite",
+    nom: "Service de scolarité",
+    icon: "ri-file-list-3-line",
+    description: "Validation des inscriptions, publication des emplois du temps et production des documents.",
+    modules: ["candidatures", "publications", "notes", "documents"],
+  },
+  {
+    id: "enseignant",
+    nom: "Enseignant",
+    icon: "ri-user-star-line",
+    description: "Saisie des notes de ses groupes, selon le circuit de validation de l'établissement.",
+    modules: ["notes"],
+  },
+  {
+    id: "bourse",
+    nom: "Agent de bourse",
+    icon: "ri-hand-coin-line",
+    description: "Publication des programmes d'aide et instruction des candidatures de bourse.",
+    modules: ["bourses"],
+  },
+  {
+    id: "recruteur",
+    nom: "Recruteur vérifié",
+    icon: "ri-briefcase-4-line",
+    description: "Publication d'offres et consultation des profils ayant donné leur consentement.",
+    modules: ["recruteurs"],
+  },
+  {
+    id: "parent",
+    nom: "Parent ou tuteur",
+    icon: "ri-parent-line",
+    description: "Accompagnement limité : uniquement ce que l'étudiant ou le statut de minorité autorise.",
+    modules: ["dashboard"],
+  },
+  {
+    id: "admin",
+    nom: "Administrateur technique",
+    icon: "ri-shield-keyhole-line",
+    description: "Paramétrage, habilitations et journaux, sans accès automatique aux données métier.",
+    modules: ["roles", "audit"],
+  },
+];
+export const fileCandidatures = [
+  {
+    id: "cand-2026-0142",
+    matricule: "MS-2004-014278",
+    nom: "AGBODJAN R.",
+    formation: "Génie Informatique",
+    serie: "C",
+    mention: "Bien",
+    moyenneBac: 15.4,
+    dateDepot: "22 septembre 2026",
+    statut: "En attente",
+  },
+  {
+    id: "cand-2026-0143",
+    matricule: "MS-2003-038851",
+    nom: "HOUNSOU M.",
+    formation: "Génie Informatique",
+    serie: "D",
+    mention: "Très bien",
+    moyenneBac: 17.1,
+    dateDepot: "22 septembre 2026",
+    statut: "En attente",
+  },
+  {
+    id: "cand-2026-0144",
+    matricule: "MS-2005-076320",
+    nom: "SOSSOU K.",
+    formation: "Génie Civil",
+    serie: "E",
+    mention: "Assez bien",
+    moyenneBac: 13.6,
+    dateDepot: "21 septembre 2026",
+    statut: "En attente",
+  },
+  {
+    id: "cand-2026-0145",
+    matricule: "MS-2004-090117",
+    nom: "DOSSOU A.",
+    formation: "Statistique et Analyse de Données",
+    serie: "C",
+    mention: "Bien",
+    moyenneBac: 15.0,
+    dateDepot: "21 septembre 2026",
+    statut: "En attente",
+  },
+  {
+    id: "cand-2026-0146",
+    matricule: "MS-2003-112004",
+    nom: "BIAOU T.",
+    formation: "Génie Informatique",
+    serie: "A2",
+    mention: "Passable",
+    moyenneBac: 11.2,
+    dateDepot: "20 septembre 2026",
+    statut: "En attente",
+  },
+];
+export const motifsRefus = [
+  "Série de baccalauréat non admise pour cette formation",
+  "Capacité d'accueil de la formation atteinte",
+  "Classement insuffisant au regard de la moyenne du baccalauréat",
+  "Dossier incomplet ou pièce non conforme",
+  "Formation non ouverte pour la campagne en cours",
+];
+export const publicationsInstitution = [
+  {
+    id: "pub-edt",
+    type: "Emploi du temps",
+    libelle: "Semestre 4 — Génie Informatique (Licence 2)",
+    statut: "Brouillon",
+    majLe: "24 septembre 2026",
+  },
+  {
+    id: "pub-exam",
+    type: "Calendrier d'examens",
+    libelle: "Examens du semestre 4 — toutes filières",
+    statut: "Publié",
+    majLe: "20 septembre 2026",
+  },
+  {
+    id: "pub-rattrapage",
+    type: "Calendrier d'examens",
+    libelle: "Sessions de rattrapage — semestre 3",
+    statut: "Publié",
+    majLe: "12 septembre 2026",
+  },
+  {
+    id: "pub-soutenance",
+    type: "Emploi du temps",
+    libelle: "Calendrier des soutenances de projet industriel",
+    statut: "Brouillon",
+    majLe: "18 septembre 2026",
+  },
+];
+export const validationsNotes = [
+  { id: "not-inf401", ue: "INF401 — Algorithmique avancée", enseignant: "Dr. BIAOU", effectif: 178, moyenneClasse: 13.2, statut: "À valider" },
+  { id: "not-inf402", ue: "INF402 — Bases de données", enseignant: "Pr. HOUNKPATIN", effectif: 178, moyenneClasse: 12.8, statut: "À valider" },
+  { id: "not-inf405", ue: "INF405 — Systèmes d'exploitation", enseignant: "Dr. GBAGUIDI", effectif: 176, moyenneClasse: 9.7, statut: "Validée" },
+  { id: "not-inf407", ue: "INF407 — Anglais technique", enseignant: "Mme AHOUANSOU", effectif: 180, moyenneClasse: 14.1, statut: "À valider" },
+];
+export const journalAudit = [
+  { id: "aud-01", action: "Décision d'admission publiée", cible: "Candidature cand-2026-0138", auteur: "Service scolarité", role: "Scolarité", date: "23 septembre 2026 · 15:42" },
+  { id: "aud-02", action: "Emploi du temps publié", cible: "Semestre 4 — Génie Civil", auteur: "Cellule emploi du temps", role: "Université", date: "23 septembre 2026 · 11:08" },
+  { id: "aud-03", action: "Notes validées", cible: "INF405 — Systèmes d'exploitation", auteur: "Dr. GBAGUIDI", role: "Enseignant", date: "22 septembre 2026 · 17:30" },
+  { id: "aud-04", action: "Motif de refus enregistré", cible: "Candidature cand-2026-0129", auteur: "Commission pédagogique", role: "Université", date: "22 septembre 2026 · 09:15" },
+  { id: "aud-05", action: "Connexion agent (authentification renforcée)", cible: "Session scolarité", auteur: "Service scolarité", role: "Scolarité", date: "22 septembre 2026 · 07:58" },
+];
+export const statsInstitution = [
+  { id: "s-1", label: "Candidatures reçues", valeur: "1 842" },
+  { id: "s-2", label: "Dossiers en attente", valeur: "126" },
+  { id: "s-3", label: "Admissions publiées", valeur: "1 210" },
+  { id: "s-4", label: "Taux d'admission", valeur: "65,7 %" },
+];
