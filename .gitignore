@@ -3,3 +3,5 @@ out
 auto-imports.d.ts
 .env
 .env.local
+.vercel
+.env*
