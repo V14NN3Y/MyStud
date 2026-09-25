@@ -6,6 +6,7 @@ import { DemoSessionProvider } from "@/hooks/DemoSessionProvider";
 import { NotificationsProvider } from "@/hooks/NotificationsProvider";
 import useScrollReveal from "@/hooks/useScrollReveal";
 import CompareBar from "@/components/feature/CompareBar";
+import ErrorBoundary from "@/components/feature/ErrorBoundary";
 function AppShell() {
   useScrollReveal();
   return (
@@ -19,11 +20,13 @@ function App() {
   return (
     <I18nextProvider i18n={i18n}>
       <BrowserRouter basename={__BASE_PATH__}>
-        <DemoSessionProvider>
-          <NotificationsProvider>
-            <AppShell />
-          </NotificationsProvider>
-        </DemoSessionProvider>
+        <ErrorBoundary>
+          <DemoSessionProvider>
+            <NotificationsProvider>
+              <AppShell />
+            </NotificationsProvider>
+          </DemoSessionProvider>
+        </ErrorBoundary>
       </BrowserRouter>
     </I18nextProvider>
   );
