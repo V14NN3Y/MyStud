@@ -1,1 +1,245 @@
-/* TODO */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --font-heading: "Sora", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-label: "Inter", system-ui, sans-serif;
+  --background-50: 0.988 0.006 95;
+  --background-100: 0.972 0.010 95;
+  --background-200: 0.942 0.014 93;
+  --background-300: 0.902 0.018 92;
+  --background-400: 0.844 0.020 90;
+  --background-500: 0.762 0.022 88;
+  --background-600: 0.662 0.022 85;
+  --background-700: 0.542 0.020 82;
+  --background-800: 0.404 0.017 80;
+  --background-900: 0.284 0.014 78;
+  --background-950: 0.182 0.011 75;
+  --primary-50: 0.972 0.032 155;
+  --primary-100: 0.942 0.058 155;
+  --primary-200: 0.892 0.092 155;
+  --primary-300: 0.822 0.122 155;
+  --primary-400: 0.722 0.142 155;
+  --primary-500: 0.578 0.128 156;
+  --primary-600: 0.502 0.114 157;
+  --primary-700: 0.422 0.098 158;
+  --primary-800: 0.342 0.080 158;
+  --primary-900: 0.272 0.062 158;
+  --primary-950: 0.182 0.042 158;
+  --accent-50: 0.986 0.032 95;
+  --accent-100: 0.966 0.072 95;
+  --accent-200: 0.932 0.120 95;
+  --accent-300: 0.904 0.156 95;
+  --accent-400: 0.872 0.170 95;
+  --accent-500: 0.832 0.170 92;
+  --accent-600: 0.722 0.155 88;
+  --accent-700: 0.582 0.130 85;
+  --accent-800: 0.462 0.105 82;
+  --accent-900: 0.362 0.080 80;
+  --accent-950: 0.242 0.055 78;
+  --secondary-50: 0.970 0.016 40;
+  --secondary-100: 0.940 0.032 38;
+  --secondary-200: 0.890 0.056 37;
+  --secondary-300: 0.822 0.086 36;
+  --secondary-400: 0.722 0.112 35;
+  --secondary-500: 0.602 0.130 33;
+  --secondary-600: 0.522 0.124 32;
+  --secondary-700: 0.442 0.110 31;
+  --secondary-800: 0.362 0.090 30;
+  --secondary-900: 0.292 0.070 30;
+  --secondary-950: 0.192 0.046 30;
+  --foreground-50: 0.972 0.004 120;
+  --foreground-100: 0.942 0.006 120;
+  --foreground-200: 0.882 0.008 120;
+  --foreground-300: 0.802 0.010 120;
+  --foreground-400: 0.682 0.012 120;
+  --foreground-500: 0.552 0.012 120;
+  --foreground-600: 0.442 0.012 120;
+  --foreground-700: 0.342 0.012 120;
+  --foreground-800: 0.252 0.010 120;
+  --foreground-900: 0.182 0.008 120;
+  --foreground-950: 0.132 0.006 120;
+}
+.dark {
+  --background-50: 0.182 0.011 75;
+  --background-100: 0.222 0.012 75;
+  --background-200: 0.282 0.013 75;
+  --background-300: 0.362 0.014 76;
+  --background-400: 0.462 0.016 76;
+  --background-500: 0.562 0.018 77;
+  --background-600: 0.662 0.020 78;
+  --background-700: 0.762 0.022 80;
+  --background-800: 0.852 0.020 82;
+  --background-900: 0.922 0.016 84;
+  --background-950: 0.966 0.010 88;
+  --foreground-50: 0.132 0.006 120;
+  --foreground-100: 0.182 0.008 120;
+  --foreground-200: 0.252 0.010 120;
+  --foreground-300: 0.342 0.012 120;
+  --foreground-400: 0.442 0.012 120;
+  --foreground-500: 0.552 0.012 120;
+  --foreground-600: 0.682 0.012 120;
+  --foreground-700: 0.802 0.010 120;
+  --foreground-800: 0.882 0.008 120;
+  --foreground-900: 0.942 0.006 120;
+  --foreground-950: 0.972 0.004 120;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--font-body);
+  background-color: oklch(var(--background-50));
+  color: oklch(var(--foreground-950));
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+@keyframes mystud-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes mystud-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-up {
+  animation: mystud-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-fade-in {
+  animation: mystud-fade-in 0.8s ease both;
+}
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.4s; }
+.hp-field {
+  position: absolute !important;
+  left: -9999px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+/* ---------- Premium motion system ---------- */
+@keyframes mystud-scale-in {
+  from { opacity: 0; transform: scale(0.96) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes mystud-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes mystud-shimmer {
+  0% { background-position: -180% 0; }
+  100% { background-position: 180% 0; }
+}
+@keyframes mystud-pulse-ring {
+  0% { box-shadow: 0 0 0 0 oklch(var(--primary-500) / 0.35); }
+  70% { box-shadow: 0 0 0 14px oklch(var(--primary-500) / 0); }
+  100% { box-shadow: 0 0 0 0 oklch(var(--primary-500) / 0); }
+}
+.animate-scale-in {
+  animation: mystud-scale-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-float {
+  animation: mystud-float 7s ease-in-out infinite;
+}
+.animate-pulse-ring {
+  animation: mystud-pulse-ring 2.2s ease-out infinite;
+}
+.shimmer-text {
+  background-image: linear-gradient(
+    100deg,
+    oklch(var(--accent-500)) 20%,
+    oklch(var(--accent-200)) 42%,
+    oklch(var(--accent-500)) 62%
+  );
+  background-size: 220% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: mystud-shimmer 5.5s linear infinite;
+}
+/* Scroll-triggered reveal: progressive enhancement, only active when JS is running */
+.reveal-enabled .animate-fade-up,
+.reveal-enabled .animate-scale-in {
+  animation-play-state: paused;
+}
+.reveal-enabled .animate-fade-up.is-inview,
+.reveal-enabled .animate-scale-in.is-inview {
+  animation-play-state: running;
+}
+.reveal-enabled .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-enabled .reveal.is-inview {
+  opacity: 1;
+  transform: none;
+}
+.hover-lift {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal-enabled .reveal,
+  .reveal-enabled .reveal.is-inview {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-float,
+  .animate-shimmer,
+  .shimmer-text,
+  .animate-pulse-ring {
+    animation: none;
+  }
+}
+/* ---------- Printable export (comparison sheet) ---------- */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
+  main {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  section {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .print-area {
+    max-width: 100% !important;
+  }
+  .print-area div[class*="overflow-x-auto"] {
+    overflow: visible !important;
+  }
+  .print-area table {
+    min-width: 0 !important;
+    table-layout: fixed;
+    width: 100% !important;
+  }
+  .print-area .animate-fade-up,
+  .print-area .reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
