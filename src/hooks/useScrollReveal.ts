@@ -51,6 +51,13 @@ export default function useScrollReveal() {
       mutation.disconnect();
       observer?.disconnect();
       observer = null;
+      // React StrictMode mounts, cleans up, then mounts again: the observer created on
+      // the first mount is disconnected before it can notify elements already in the
+      // viewport. Clearing the guard lets the next mount's scanForReveals re-observe
+      // them instead of skipping them forever.
+      document.querySelectorAll(SELECTOR).forEach((node) => {
+        delete (node as HTMLElement).dataset.revealBound;
+      });
     };
   }, []);
 }
