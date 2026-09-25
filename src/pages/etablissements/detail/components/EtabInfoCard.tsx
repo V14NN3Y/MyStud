@@ -1,4 +1,10 @@
-ction EtabInfoCard({ etablissement }: EtabInfoCardProps) {
+import { useTranslation } from "react-i18next";
+import type { Etablissement } from "@/types/portal";
+import StatusBadge from "@/components/base/StatusBadge";
+interface EtabInfoCardProps {
+  etablissement: Etablissement;
+}
+export default function EtabInfoCard({ etablissement }: EtabInfoCardProps) {
   const { t } = useTranslation();
   const carteSrc = `https://www.google.com/maps?q=${encodeURIComponent(
     `${etablissement.nom} ${etablissement.ville}, Bénin`
