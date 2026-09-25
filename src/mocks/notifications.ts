@@ -55,7 +55,7 @@ export const historiqueNotifications = [
   {
     id: "n-01",
     titre: "Examen déplacé : Réseaux et systèmes",
-    message: "L'examen du 26 novembre passe de l'Amphi 205 à l'Amphi 210. Présentez-vous 15 minutes avant le début.",
+    message: "L'examen du 26 novembre passe de l'Amphi 210 à l'Amphi 205. Présentez-vous 15 minutes avant le début.",
     categorie: "notes",
     canal: "Portail",
     priorite: "haute",
@@ -119,6 +119,3 @@ export const historiqueNotifications = [
     etatEnvoi: "Envoyé",
   },
 ];
-
-
-//  la notification n-01 dit que l’examen passe à l’Amphi 210, alors que dans etudiant.ts, l’examen ex-inf403 (Réseaux et systèmes) est bien en salle “Amphi 205” avec la consigne de déplacement Amphi 210 → Amphi 205. Les deux se contredisent sur le sens du changement de salle (205→210 vs 210→205). Si tu veux que je fasse une passe de cohérence sur ces détails, dis-le.

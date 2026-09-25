@@ -10,7 +10,7 @@ const INDEX_STATUT: Record<string, number> = {
   cloture: 5,
 };
 const STATUTS_TERMINAUX = ["acceptee", "rejetee", "cloture"];
-export function indexStatut(statut: string): number {
+function indexStatut(statut: string): number {
   return INDEX_STATUT[statut] ?? 0;
 }
 const ETAT_STYLES: Record<string, { circle: string; line: string; chip: string; icon: string }> = {
