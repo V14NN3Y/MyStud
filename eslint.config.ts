@@ -57,11 +57,8 @@ export default [
         NodeJS: 'readonly',
         JSX: 'readonly',
         IdleRequestCallback: 'readonly',
+        RequestInit: 'readonly',
         __BASE_PATH__: 'readonly',
-        __IS_PREVIEW__: 'readonly',
-        __READDY_PROJECT_ID__: 'readonly',
-        __READDY_VERSION_ID__: 'readonly',
-        __READDY_AI_DOMAIN__: 'readonly',
       },
     },
     plugins: {
@@ -98,6 +95,17 @@ export default [
     },
     rules: {
       'local-route/route-element-jsx': 'error',
+    },
+  },
+  // Fast Refresh never runs for tests or test-only helpers, so the export-shape
+  // constraint it needs doesn't apply here.
+  {
+    files: ['src/**/*.test.{ts,tsx}', 'src/test/**/*.{ts,tsx}'],
+    plugins: {
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      'react-refresh/only-export-components': 'off',
     },
   },
 ]
