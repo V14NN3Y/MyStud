@@ -1,6 +1,9 @@
 export default {
   "brand.name": "MyStud",
   "brand.tagline": "Portail national de l'enseignement supérieur du Bénin",
+  "notFound.eyebrow": "Page introuvable",
+  "notFound.title": "Cette page n'existe pas ou n'a pas encore été créée",
+  "notFound.desc": "Le lien est peut-être obsolète ou mal orthographié. Utilisez la navigation ou l'un des raccourcis ci-dessous pour continuer.",
   "common.seeAll": "Voir tout",
   "common.seeDetails": "Voir la fiche",
   "common.search": "Rechercher",
