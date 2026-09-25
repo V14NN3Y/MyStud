@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+export const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
 export class ApiError extends Error {
   readonly status: number;
   constructor(message: string, status: number) {
@@ -46,6 +46,47 @@ export function sendNotification(
     method: "POST",
     headers: authHeader(token),
     body: JSON.stringify(payload),
+  });
+}
+// The shared demo notification feed (no auth: see server/src/routes/notifications.ts).
+export interface ServerNotification {
+  id: number;
+  titre: string;
+  message: string;
+  categorie: string;
+  canal: string;
+  priorite: string;
+  etat_envoi: string;
+  lu: number;
+  created_at: string;
+}
+export function listNotifications() {
+  return apiFetch<ServerNotification[]>("/api/notifications");
+}
+export function markNotificationRead(id: number) {
+  return apiFetch<ServerNotification>(`/api/notifications/${id}/read`, { method: "PATCH" });
+}
+export function markAllNotificationsRead() {
+  return apiFetch<ServerNotification[]>("/api/notifications/read-all", { method: "PATCH" });
+}
+export interface ServerNotificationPreference {
+  categorie: string;
+  portail: number;
+  sms: number;
+  email: number;
+  verrouille: number;
+}
+export function listNotificationPreferences() {
+  return apiFetch<ServerNotificationPreference[]>("/api/notifications/preferences");
+}
+export function updateNotificationPreference(
+  categorie: string,
+  canal: "portail" | "sms" | "email",
+  value: boolean
+) {
+  return apiFetch<ServerNotificationPreference>(`/api/notifications/preferences/${categorie}`, {
+    method: "PATCH",
+    body: JSON.stringify({ canal, value }),
   });
 }
 // --- Audit log ------------------------------------------------------

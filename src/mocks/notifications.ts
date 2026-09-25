@@ -42,80 +42,9 @@ export const categoriesNotification = [
   { id: "documents", nom: "Documents administratifs" },
   { id: "securite", nom: "Sécurité du compte" },
 ];
-// portail, sms, email. verrouille = true => canal obligatoire (sécurité / administratif).
-export const preferencesNotifications = [
-  { categorie: "identite", portail: true, sms: true, email: true, verrouille: true },
-  { categorie: "candidatures", portail: true, sms: true, email: false, verrouille: false },
-  { categorie: "notes", portail: true, sms: false, email: true, verrouille: false },
-  { categorie: "bourses", portail: true, sms: true, email: true, verrouille: false },
-  { categorie: "documents", portail: true, sms: false, email: true, verrouille: false },
-  { categorie: "securite", portail: true, sms: true, email: true, verrouille: true },
-];
-export const historiqueNotifications = [
-  {
-    id: "n-01",
-    titre: "Examen déplacé : Réseaux et systèmes",
-    message: "L'examen du 26 novembre passe de l'Amphi 210 à l'Amphi 205. Présentez-vous 15 minutes avant le début.",
-    categorie: "notes",
-    canal: "Portail",
-    priorite: "haute",
-    date: "Aujourd'hui · 09:12",
-    lu: false,
-    etatEnvoi: "Envoyé",
-  },
-  {
-    id: "n-02",
-    titre: "Candidature transmise à l'EPAC",
-    message: "Votre candidature en Génie Informatique a été transmise à l'établissement pour instruction.",
-    categorie: "candidatures",
-    canal: "Portail",
-    priorite: "normale",
-    date: "Hier · 16:40",
-    lu: true,
-    etatEnvoi: "Envoyé",
-  },
-  {
-    id: "n-03",
-    titre: "Nouvelle bourse publiée",
-    message: "La bourse d'excellence académique est ouverte aux candidatures jusqu'au 30 septembre.",
-    categorie: "bourses",
-    canal: "E-mail",
-    priorite: "normale",
-    date: "12 septembre 2026",
-    lu: true,
-    etatEnvoi: "Envoyé",
-  },
-  {
-    id: "n-04",
-    titre: "Relevé de notes disponible",
-    message: "Votre relevé de notes du semestre 4 est prêt à être téléchargé depuis vos documents.",
-    categorie: "documents",
-    canal: "E-mail",
-    priorite: "normale",
-    date: "10 septembre 2026",
-    lu: false,
-    etatEnvoi: "Envoyé",
-  },
-  {
-    id: "n-05",
-    titre: "Rappel : deuxième tranche des frais",
-    message: "La deuxième tranche des frais de scolarité est due avant le 30 novembre 2026.",
-    categorie: "documents",
-    canal: "SMS",
-    priorite: "normale",
-    date: "8 septembre 2026",
-    lu: false,
-    etatEnvoi: "Échec",
-  },
-  {
-    id: "n-06",
-    titre: "Code de vérification envoyé",
-    message: "Un code à usage unique a été envoyé au numéro associé à votre NPI. Il expire dans 5 minutes.",
-    categorie: "identite",
-    canal: "SMS",
-    priorite: "haute",
-    date: "2 septembre 2026",
-    lu: true,
-    etatEnvoi: "Envoyé",
-  },
-];
+// L'historique des notifications et les préférences de canal par catégorie
+// vivent désormais dans le backend (server/src/db.ts, tables `notifications`
+// et `notification_preferences`) — voir src/hooks/NotificationsProvider.tsx
+// et src/pages/notifications/page.tsx. Ce fichier ne garde que la taxonomie
+// statique (canaux, catégories, types d'événements), qui ne dépend d'aucun
+// état par visiteur.

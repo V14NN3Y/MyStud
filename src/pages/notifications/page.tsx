@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import PortalNavbar from "@/components/feature/PortalNavbar";
 import PortalFooter from "@/components/feature/PortalFooter";
 import PageHero from "@/components/feature/PageHero";
-import { preferencesNotifications } from "@/mocks/notifications";
+import { listNotificationPreferences, updateNotificationPreference } from "@/lib/api";
 import useNotifications from "@/hooks/useNotifications";
 import CanauxGrid from "./components/CanauxGrid";
 import NotificationItem from "./components/NotificationItem";
@@ -20,10 +20,28 @@ const TABS: { key: TabKey; labelKey: string; icon: string }[] = [
 export default function Notifications() {
   const { t } = useTranslation();
   const [tab, setTab] = useState<TabKey>("historique");
-  const { list, nonLues, markRead, toutLire, ouvrir, notificationOuverte } = useNotifications();
-  const [prefs, setPrefs] = useState<PreferenceRow[]>(preferencesNotifications as PreferenceRow[]);
+  const { list, nonLues, markRead, toutLire, ouvrir, notificationOuverte, enLigne } = useNotifications();
+  const [prefs, setPrefs] = useState<PreferenceRow[]>([]);
   const [saved, setSaved] = useState(false);
   const [searchParams] = useSearchParams();
+  useEffect(() => {
+    listNotificationPreferences()
+      .then((rows) =>
+        setPrefs(
+          rows.map((row) => ({
+            categorie: row.categorie,
+            portail: Boolean(row.portail),
+            sms: Boolean(row.sms),
+            email: Boolean(row.email),
+            verrouille: Boolean(row.verrouille),
+          }))
+        )
+      )
+      .catch(() => {
+        // Backend unreachable: the matrix just stays empty rather than
+        // showing preferences that couldn't actually be saved.
+      });
+  }, []);
   useEffect(() => {
     const cible = searchParams.get("n");
     if (cible) ouvrir(cible);
@@ -33,14 +51,23 @@ export default function Notifications() {
     [list]
   );
   const togglePref = (categorie: string, canal: "portail" | "sms" | "email") => {
+    const row = prefs.find((r) => r.categorie === categorie);
+    if (!row || row.verrouille) return;
+    const nextValue = !row[canal];
     setPrefs((prev) =>
-      prev.map((row) => {
-        if (row.categorie !== categorie || row.verrouille) return row;
-        return { ...row, [canal]: !row[canal] };
-      })
+      prev.map((r) => (r.categorie === categorie ? { ...r, [canal]: nextValue } : r))
     );
-    setSaved(true);
-    window.setTimeout(() => setSaved(false), 2200);
+    updateNotificationPreference(categorie, canal, nextValue)
+      .then(() => {
+        setSaved(true);
+        window.setTimeout(() => setSaved(false), 2200);
+      })
+      .catch(() => {
+        // Revert the optimistic toggle: it never actually persisted.
+        setPrefs((prev) =>
+          prev.map((r) => (r.categorie === categorie ? { ...r, [canal]: !nextValue } : r))
+        );
+      });
   };
   return (
     <div className="flex min-h-screen w-full flex-col bg-background-50">
@@ -57,6 +84,12 @@ export default function Notifications() {
               <i className="ri-information-line text-sm"></i>
               {t("notif.notice")}
             </span>
+            {!enLigne && (
+              <span className="inline-flex items-center gap-2 rounded-full border border-background-300 bg-background-50 px-3 py-1.5 text-xs font-semibold text-foreground-700">
+                <i className="ri-cloud-off-line text-sm"></i>
+                {t("notif.offline")}
+              </span>
+            )}
             <Link
               to="/faq"
               className="inline-flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-md border border-background-300 bg-background-50 px-4 py-2 text-xs font-semibold text-foreground-700 transition-colors hover:border-primary-300 hover:text-primary-700"

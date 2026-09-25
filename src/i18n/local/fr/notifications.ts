@@ -3,6 +3,7 @@ export default {
   "notif.title": "Notifications et assistance",
   "notif.subtitle": "MyStud vous informe par trois canaux — le portail, le SMS et l'e-mail — pour les étapes clés de votre parcours : identité, baccalauréat, candidatures, notes, examens, bourses et documents.",
   "notif.notice": "Aucun envoi réel n'est effectué sans configuration explicite : le portail, le SMS et l'e-mail sont présentés comme des canaux abstraits.",
+  "notif.offline": "Backend indisponible — historique et préférences non disponibles",
   "notif.faqLink": "Consulter la FAQ d'assistance",
   "notif.canaux.title": "Canaux de notification",
   "notif.canaux.desc": "Le portail est toujours actif et archive chaque événement. Le SMS et l'e-mail complètent les informations urgentes ou documentaires.",

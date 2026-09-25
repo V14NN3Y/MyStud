@@ -35,6 +35,14 @@ plupart des pages restent encore 100% démo.
   fonctionne à l'identique avec ou sans clé. Testé (`test/notifications.test.ts`)
   en mockant `fetch` — aucun test n'appelle jamais le vrai réseau Resend.
   Exposé via `POST /api/notifications/send`.
+- **Fil de notifications persistant** (`src/db.ts`, `src/routes/notifications.ts`)
+  — tables `notifications` et `notification_preferences` : l'état lu/non-lu
+  et les préférences de canal par catégorie sont écrits en base, pas
+  seulement dans l'état React d'un onglet. Public (sans `requireRole`) comme
+  `identity.ts` : il n'y a pas de compte étudiant réel à authentifier.
+  Exposé via `GET /api/notifications`, `PATCH /api/notifications/:id/read`,
+  `PATCH /api/notifications/read-all`, `GET /api/notifications/preferences`,
+  `PATCH /api/notifications/preferences/:categorie`.
 
 ## Intégration frontend
 
@@ -46,6 +54,12 @@ Le client API frontend vit dans `src/lib/api.ts` (racine du repo, pas dans
   jeton renvoyé est stocké dans `ProfilDemo.npiToken` et affiché dans le
   récapitulatif ; l'e-mail saisi déclenche un vrai envoi Resend. CORS est
   ouvert uniquement à `CORS_ORIGIN` (`src/app.ts`).
+- **Branché** : `NotificationsProvider` (donc la cloche de la navbar et
+  `/notifications` sur tout le site) lit et écrit le fil de notifications et
+  les préférences via le backend — plus de compteur non-lu figé dans un
+  fichier mock. Si le backend est indisponible, la liste reste vide (aucune
+  fausse donnée) et `/notifications` affiche un bandeau "Backend
+  indisponible" plutôt que de fabriquer un état.
 - **Pas encore branché** : le `RoleSwitcher` de `/universite` reste un
   `useState` client (pas d'appel à `/api/auth/session`), le journal d'audit
   affiché y est toujours le tableau mock en mémoire (pas `/api/audit`), et

@@ -18,6 +18,7 @@ export interface NotificationsValue {
   ouverteId: string | null;
   notificationOuverte: NotificationData | null;
   ouvrir: (id: string | null) => void;
+  enLigne: boolean;
 }
 export const NotificationsContext = createContext<NotificationsValue | null>(null);
 export default function useNotifications() {
