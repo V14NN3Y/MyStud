@@ -199,3 +199,38 @@ export function validateNotes(token: string, id: string) {
     headers: authHeader(token),
   });
 }
+// --- Bourse candidatures (/bourses/suivi) --------------------------------
+// Public, like notifications: there is no real per-student login yet.
+export interface ServerBourseCandidature {
+  id: string;
+  programme_id: string;
+  programme: string;
+  organisme: string;
+  montant: string;
+  reference: string;
+  statut: string;
+  montant_accorde: string;
+  date_depot: string;
+  message: string;
+  updated_at: string;
+}
+export function listBourseCandidatures() {
+  return apiFetch<ServerBourseCandidature[]>("/api/bourse-candidatures");
+}
+export function createBourseCandidature(payload: {
+  programmeId: string;
+  programme: string;
+  organisme: string;
+  montant: string;
+}) {
+  return apiFetch<ServerBourseCandidature>("/api/bourse-candidatures", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+export function deleteBourseCandidature(id: string) {
+  return apiFetch<undefined>(`/api/bourse-candidatures/${id}`, { method: "DELETE" });
+}
+export function deposerPiecesBourse(id: string) {
+  return apiFetch<ServerBourseCandidature>(`/api/bourse-candidatures/${id}/deposer-pieces`, { method: "PATCH" });
+}

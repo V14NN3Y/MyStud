@@ -3,23 +3,16 @@ import { useTranslation } from "react-i18next";
 import useDemoSession from "@/hooks/useDemoSession";
 import { bourses } from "@/mocks/bourses";
 import { piecesComplementairesBourse } from "@/mocks/candidaturesBourse";
-interface NouvelleCandidature {
-  id: string;
+export interface NouvelleCandidaturePayload {
   programmeId: string;
   programme: string;
   organisme: string;
   montant: string;
-  reference: string;
-  statut: string;
-  montantAccorde: string;
-  dateDepot: string;
-  majLe: string;
-  message: string;
 }
 interface BourseWizardProps {
   open: boolean;
   onClose: () => void;
-  onSubmit: (candidature: NouvelleCandidature) => void;
+  onSubmit: (payload: NouvelleCandidaturePayload) => Promise<void>;
 }
 const ETAPES = [
   { key: "programme", titleKey: "bsuivi.depot.choose", icon: "ri-award-line" },
@@ -34,7 +27,8 @@ export default function BourseWizard({ open, onClose, onSubmit }: BourseWizardPr
   const [step, setStep] = useState(0);
   const [programmeId, setProgrammeId] = useState("");
   const [pieces, setPieces] = useState<string[]>([]);
-  const [reference] = useState(() => `MYSTUD-BRS-2026-${String(Math.floor(100000 + Math.random() * 899999))}`);
+  const [enCours, setEnCours] = useState(false);
+  const [erreur, setErreur] = useState<string | null>(null);
   useEffect(() => {
     if (!open) return undefined;
     const previous = document.body.style.overflow;
@@ -48,6 +42,7 @@ export default function BourseWizard({ open, onClose, onSubmit }: BourseWizardPr
       setStep(0);
       setProgrammeId("");
       setPieces([]);
+      setErreur(null);
     }
   }, [open]);
   if (!open) return null;
@@ -56,22 +51,22 @@ export default function BourseWizard({ open, onClose, onSubmit }: BourseWizardPr
   const togglePiece = (id: string) => {
     setPieces((prev) => (prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]));
   };
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!programme) return;
-    const date = new Date().toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" });
-    onSubmit({
-      id: `cb-${Date.now()}`,
-      programmeId: programme.id,
-      programme: programme.nom,
-      organisme: programme.organisme,
-      montant: programme.montant,
-      reference,
-      statut: "soumise",
-      montantAccorde: "—",
-      dateDepot: date,
-      majLe: date,
-      message: "Votre demande vient d'être enregistrée et sera transmise à l'organisme responsable.",
-    });
+    setEnCours(true);
+    setErreur(null);
+    try {
+      await onSubmit({
+        programmeId: programme.id,
+        programme: programme.nom,
+        organisme: programme.organisme,
+        montant: programme.montant,
+      });
+    } catch (err) {
+      setErreur(err instanceof Error ? err.message : "La soumission a échoué. Réessayez.");
+    } finally {
+      setEnCours(false);
+    }
   };
   return (
     <div className="fixed inset-0 z-[60] flex items-end justify-center bg-foreground-950/50 p-0 sm:items-center sm:p-6" role="dialog" aria-modal="true">
@@ -208,12 +203,18 @@ export default function BourseWizard({ open, onClose, onSubmit }: BourseWizardPr
                 <span className="text-xs text-foreground-500">{t("bsuivi.depot.montant")}</span>
                 <span className="text-sm font-semibold text-foreground-950">{programme.montant}</span>
               </div>
-              <div className="flex items-center justify-between gap-3">
-                <span className="text-xs text-foreground-500">{t("bsuivi.card.reference")}</span>
-                <span className="text-sm font-semibold text-foreground-950">{reference}</span>
-              </div>
             </div>
+            <p className="mt-3 flex items-start gap-2 text-[11px] leading-relaxed text-foreground-500">
+              <i className="ri-information-line mt-0.5"></i>
+              {t("bsuivi.depot.referenceNote")}
+            </p>
           </div>
+        )}
+        {erreur && (
+          <p className="mt-4 flex items-center gap-2 text-xs font-medium text-accent-900">
+            <i className="ri-error-warning-line"></i>
+            {erreur}
+          </p>
         )}
         {/* Actions */}
         <div className="mt-6 flex flex-col items-stretch gap-3 border-t border-background-200 pt-5 sm:flex-row sm:items-center sm:justify-between">
@@ -241,9 +242,10 @@ export default function BourseWizard({ open, onClose, onSubmit }: BourseWizardPr
             <button
               type="button"
               onClick={handleSubmit}
-              className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md bg-accent-500 px-5 py-2.5 text-sm font-semibold text-foreground-950 transition-colors hover:bg-accent-600"
+              disabled={enCours}
+              className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md bg-accent-500 px-5 py-2.5 text-sm font-semibold text-foreground-950 transition-colors hover:bg-accent-600 disabled:cursor-not-allowed disabled:opacity-70"
             >
-              <i className="ri-send-plane-line"></i>
+              <i className={enCours ? "ri-loader-4-line animate-spin" : "ri-send-plane-line"}></i>
               {t("bsuivi.depot.submit")}
             </button>
           )}

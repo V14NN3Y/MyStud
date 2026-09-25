@@ -8,6 +8,7 @@ import { notificationsRouter } from "./routes/notifications.ts";
 import { candidaturesRouter } from "./routes/candidatures.ts";
 import { publicationsRouter } from "./routes/publications.ts";
 import { notesValidationsRouter } from "./routes/notesValidations.ts";
+import { bourseCandidaturesRouter } from "./routes/bourseCandidatures.ts";
 import { env } from "./env.ts";
 export function createApp() {
   const app = express();
@@ -22,5 +23,6 @@ export function createApp() {
   app.use("/api/candidatures", candidaturesRouter);
   app.use("/api/publications", publicationsRouter);
   app.use("/api/notes-validations", notesValidationsRouter);
+  app.use("/api/bourse-candidatures", bourseCandidaturesRouter);
   return app;
 }

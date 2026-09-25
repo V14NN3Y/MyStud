@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { piecesComplementairesBourse } from "@/mocks/candidaturesBourse";
+import { deposerPiecesBourse, type ServerBourseCandidature } from "@/lib/api";
+import { formatServerDateOnly } from "@/lib/format";
 import BourseSteps from "./BourseSteps";
-interface CandidatureBourse {
+export interface CandidatureBourse {
   id: string;
   programmeId: string;
   programme: string;
@@ -15,9 +17,25 @@ interface CandidatureBourse {
   majLe: string;
   message: string;
 }
+function toDisplay(row: ServerBourseCandidature): CandidatureBourse {
+  return {
+    id: row.id,
+    programmeId: row.programme_id,
+    programme: row.programme,
+    organisme: row.organisme,
+    montant: row.montant,
+    reference: row.reference,
+    statut: row.statut,
+    montantAccorde: row.montant_accorde,
+    dateDepot: formatServerDateOnly(row.date_depot),
+    majLe: formatServerDateOnly(row.updated_at),
+    message: row.message,
+  };
+}
 interface BourseCandidatureCardProps {
   candidature: CandidatureBourse;
   onRemove: (id: string) => void;
+  onUpdated: (updated: CandidatureBourse) => void;
 }
 const STATUT_STYLES: Record<string, string> = {
   soumise: "bg-background-200 text-foreground-700",
@@ -28,10 +46,23 @@ const STATUT_STYLES: Record<string, string> = {
   paiement: "bg-primary-100 text-primary-800",
   cloture: "bg-background-200 text-foreground-600",
 };
-export default function BourseCandidatureCard({ candidature, onRemove }: BourseCandidatureCardProps) {
+export default function BourseCandidatureCard({ candidature, onRemove, onUpdated }: BourseCandidatureCardProps) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
-  const [piecesDeposees, setPiecesDeposees] = useState(false);
+  const [enCours, setEnCours] = useState(false);
+  const [erreur, setErreur] = useState<string | null>(null);
+  const deposerPieces = async () => {
+    setEnCours(true);
+    setErreur(null);
+    try {
+      const row = await deposerPiecesBourse(candidature.id);
+      onUpdated(toDisplay(row));
+    } catch (err) {
+      setErreur(err instanceof Error ? err.message : "L'envoi des pièces a échoué. Réessayez.");
+    } finally {
+      setEnCours(false);
+    }
+  };
   return (
     <article className="reveal rounded-lg border border-background-200 bg-background-50 p-5">
       <div className="flex flex-wrap items-start justify-between gap-4">
@@ -89,16 +120,20 @@ export default function BourseCandidatureCard({ candidature, onRemove }: BourseC
               </li>
             ))}
           </ul>
+          {erreur && (
+            <p className="mt-3 flex items-center gap-2 text-xs font-medium text-accent-900">
+              <i className="ri-error-warning-line"></i>
+              {erreur}
+            </p>
+          )}
           <button
             type="button"
-            onClick={() => setPiecesDeposees(true)}
-            disabled={piecesDeposees}
-            className={`mt-3 inline-flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-md px-4 py-2.5 text-xs font-semibold transition-colors ${
-              piecesDeposees ? "cursor-default bg-primary-100 text-primary-800" : "bg-primary-500 text-background-50 hover:bg-primary-600"
-            }`}
+            onClick={deposerPieces}
+            disabled={enCours}
+            className="mt-3 inline-flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-background-50 transition-colors hover:bg-primary-600 disabled:cursor-not-allowed disabled:opacity-70"
           >
-            <i className={piecesDeposees ? "ri-check-line" : "ri-upload-2-line"}></i>
-            {piecesDeposees ? t("bsuivi.pieces.depose") : t("bsuivi.pieces.deposer")}
+            <i className={enCours ? "ri-loader-4-line animate-spin" : "ri-upload-2-line"}></i>
+            {t("bsuivi.pieces.deposer")}
           </button>
         </div>
       )}

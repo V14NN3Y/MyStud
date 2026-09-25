@@ -54,6 +54,16 @@ plupart des pages restent encore 100% démo.
   `GET /api/candidatures`, `PATCH /api/candidatures/:id/decision`,
   `GET /api/publications`, `PATCH /api/publications/:id/toggle`,
   `GET /api/notes-validations`, `PATCH /api/notes-validations/:id/valider`.
+- **Suivi de bourses étudiant persistant** (`src/db.ts`,
+  `src/routes/bourseCandidatures.ts`) — déposer une candidature de bourse,
+  la retirer, ou envoyer une pièce complémentaire demandée : ces trois
+  actions ne vivaient que dans l'état React de `/bourses/suivi`, y compris
+  le bouton "J'ai déposé ces pièces" qui ne changeait même pas le statut
+  localement. Public comme les notifications (pas de compte étudiant réel) ;
+  le serveur génère lui-même la référence de suivi (`MYSTUD-BRS-2026-XXXXXX`),
+  pas le client. Exposé via `GET /api/bourse-candidatures`,
+  `POST /api/bourse-candidatures`, `DELETE /api/bourse-candidatures/:id`,
+  `PATCH /api/bourse-candidatures/:id/deposer-pieces`.
 
 ## Intégration frontend
 
@@ -87,11 +97,18 @@ Le client API frontend vit dans `src/lib/api.ts` (racine du repo, pas dans
   l'API au lieu de rester dans l'état React du composant. Si le backend est
   indisponible, chacun retombe sur son contenu mock d'origine (mode
   démonstration locale, comme le reste de la page).
-- **Pas encore branché** : le catalogue des programmes de bourse
-  (`bourses.ts`) et le suivi des candidatures de bourse côté étudiant
-  (`/bourses/suivi`) restent des mocks statiques, de même que les
-  formations/établissements/facultés, les emplois, les annonces, la FAQ, le
-  profil étudiant et les tableaux de bord ministère.
+- **Branché** : `/bourses/suivi` charge la vraie liste au montage, la
+  soumission du wizard et le retrait d'une candidature persistent, et
+  "J'ai déposé ces pièces" fait vraiment repasser le dossier en instruction
+  au lieu d'un simple cocher local. Backend indisponible → liste vide et
+  bandeau "Backend indisponible" plutôt qu'un faux état vide ou des données
+  mock présentées comme réelles.
+- **Pas encore branché** : aucune autre page n'utilise `/api/documents`
+  (relevés/certificats côté `/etudiant`, par exemple). Le catalogue des
+  programmes de bourse (`bourses.ts`), les formations/établissements/
+  facultés, les emplois, les annonces, la FAQ, le profil étudiant et les
+  tableaux de bord ministère restent des mocks statiques dans `src/mocks/`
+  — voir "Ce qui n'est pas fait" ci-dessous.
 
 ## Ce qui n'est pas fait
 
@@ -102,6 +119,16 @@ Le client API frontend vit dans `src/lib/api.ts` (racine du repo, pas dans
 - **Gouvernance NPI/ANIP réelle**, MFA agents, sauvegardes/plan de reprise —
   toujours hors de portée d'un backend de démonstration ; voir
   `docs/security-and-quality.md` section 7-8.
+- **Les autres domaines de contenu** (catalogue des programmes de bourse,
+  formations, établissements, facultés, emplois, annonces, FAQ, profil
+  étudiant, stats ministère) n'ont pas de table ni d'endpoint : ce sont
+  encore des fichiers statiques dans `src/mocks/`. Ce sont majoritairement
+  des catalogues de référence plutôt que de l'état qui se fait passer pour
+  réel, donc moins prioritaires que les trois domaines déjà migrés
+  (notifications, workflows institutionnels de `/universite`, suivi de
+  bourses étudiant) ; les autres suivraient le même patron (table SQLite +
+  routes + réécriture du provider/de la page correspondante) s'ils sont
+  demandés.
 
 ## Lancer le serveur
 

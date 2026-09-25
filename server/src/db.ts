@@ -102,6 +102,26 @@ db.exec(`
     statut TEXT NOT NULL DEFAULT 'À valider',
     validated_at TEXT
   );
+
+  -- Student-side bourse tracking (/bourses/suivi). Submitting a candidature
+  -- or withdrawing one used to only touch this page's own React state —
+  -- gone on reload, and the "déposer les pièces" button didn't even change
+  -- the local statut. No real per-student login exists yet (see
+  -- server/README.md), so like notifications this is one shared demo list,
+  -- not scoped to a real account.
+  CREATE TABLE IF NOT EXISTS bourse_candidatures (
+    id TEXT PRIMARY KEY,
+    programme_id TEXT NOT NULL,
+    programme TEXT NOT NULL,
+    organisme TEXT NOT NULL,
+    montant TEXT NOT NULL,
+    reference TEXT NOT NULL,
+    statut TEXT NOT NULL DEFAULT 'soumise',
+    montant_accorde TEXT NOT NULL DEFAULT '—',
+    date_depot TEXT NOT NULL,
+    message TEXT NOT NULL,
+    updated_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+  );
 `);
 // Seed once: a fresh database (dev's first run, or a test's throwaway
 // DATA_DIR) starts with the same demo content the old mock shipped, but from
@@ -195,4 +215,29 @@ if ((db.prepare("SELECT COUNT(*) AS n FROM notes_validations").get() as { n: num
     ["not-inf407", "INF407 — Anglais technique", "Mme AHOUANSOU", 180, 14.1, "À valider", null],
   ];
   for (const row of seedNotes) insertNote.run(...row);
+}
+if ((db.prepare("SELECT COUNT(*) AS n FROM bourse_candidatures").get() as { n: number }).n === 0) {
+  const insertBourseCandidature = db.prepare(
+    `INSERT INTO bourse_candidatures
+       (id, programme_id, programme, organisme, montant, reference, statut, montant_accorde, date_depot, message, updated_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+  );
+  const seedBourseCandidatures: [string, string, string, string, string, string, string, string, string, string, string][] = [
+    [
+      "cb-1", "bourse-bac", "Bourse nationale du nouveau bachelier", "Ministère de l'Enseignement Supérieur",
+      "Prise en charge complète", "MYSTUD-BRS-2026-004871", "etude", "—", "2026-09-04T09:00:00.000Z",
+      "Votre dossier est en cours d'instruction par le service des bourses.", "2026-09-16T09:00:00.000Z",
+    ],
+    [
+      "cb-2", "aide-sociale", "Aide sociale étudiante", "Ministère des Affaires Sociales",
+      "Jusqu'à 25 000 FCFA / mois", "MYSTUD-BRS-2026-004986", "complement", "—", "2026-08-28T09:00:00.000Z",
+      "Une pièce complémentaire est demandée pour poursuivre l'instruction de votre demande.", "2026-09-12T09:00:00.000Z",
+    ],
+    [
+      "cb-3", "bourse-excellence", "Bourse d'excellence académique", "Ministère de l'Enseignement Supérieur",
+      "Mention + frais de mobilité", "MYSTUD-BRS-2026-003112", "paiement", "150 000 FCFA / trimestre", "2026-07-12T09:00:00.000Z",
+      "Votre bourse a été acceptée. Le mandat de paiement a été transmis à la trésorerie.", "2026-09-09T09:00:00.000Z",
+    ],
+  ];
+  for (const row of seedBourseCandidatures) insertBourseCandidature.run(...row);
 }

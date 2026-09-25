@@ -5,3 +5,8 @@ export function formatServerDate(iso: string): string {
   const heure = date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
   return `${jour} · ${heure}`;
 }
+export function formatServerDateOnly(iso: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  return date.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+}
