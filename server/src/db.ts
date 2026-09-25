@@ -66,6 +66,42 @@ db.exec(`
     verrouille INTEGER NOT NULL DEFAULT 0
   );
 
+  -- /universite's institutional workflows. Before this, accepting a
+  -- candidature, publishing a schedule or validating a note only wrote an
+  -- audit_events row: the underlying record itself lived in React state and
+  -- reset to "En attente"/"Brouillon"/"À valider" on every reload.
+  CREATE TABLE IF NOT EXISTS candidatures (
+    id TEXT PRIMARY KEY,
+    matricule TEXT NOT NULL,
+    nom TEXT NOT NULL,
+    formation TEXT NOT NULL,
+    serie TEXT NOT NULL,
+    mention TEXT NOT NULL,
+    moyenne_bac REAL NOT NULL,
+    date_depot TEXT NOT NULL,
+    statut TEXT NOT NULL DEFAULT 'En attente',
+    motif_refus TEXT,
+    commentaire TEXT,
+    updated_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS publications (
+    id TEXT PRIMARY KEY,
+    type TEXT NOT NULL,
+    libelle TEXT NOT NULL,
+    statut TEXT NOT NULL DEFAULT 'Brouillon',
+    updated_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS notes_validations (
+    id TEXT PRIMARY KEY,
+    ue TEXT NOT NULL,
+    enseignant TEXT NOT NULL,
+    effectif INTEGER NOT NULL,
+    moyenne_classe REAL NOT NULL,
+    statut TEXT NOT NULL DEFAULT 'À valider',
+    validated_at TEXT
+  );
 `);
 // Seed once: a fresh database (dev's first run, or a test's throwaway
 // DATA_DIR) starts with the same demo content the old mock shipped, but from
@@ -120,4 +156,43 @@ if ((db.prepare("SELECT COUNT(*) AS n FROM notifications").get() as { n: number 
     ["securite", 1, 1, 1, 1],
   ];
   for (const row of seedPreferences) insertPreference.run(...row);
+}
+if ((db.prepare("SELECT COUNT(*) AS n FROM candidatures").get() as { n: number }).n === 0) {
+  const insertCandidature = db.prepare(
+    `INSERT INTO candidatures (id, matricule, nom, formation, serie, mention, moyenne_bac, date_depot)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+  );
+  const seedCandidatures: [string, string, string, string, string, string, number, string][] = [
+    ["cand-2026-0142", "MS-2004-014278", "AGBODJAN R.", "Génie Informatique", "C", "Bien", 15.4, "22 septembre 2026"],
+    ["cand-2026-0143", "MS-2003-038851", "HOUNSOU M.", "Génie Informatique", "D", "Très bien", 17.1, "22 septembre 2026"],
+    ["cand-2026-0144", "MS-2005-076320", "SOSSOU K.", "Génie Civil", "E", "Assez bien", 13.6, "21 septembre 2026"],
+    ["cand-2026-0145", "MS-2004-090117", "DOSSOU A.", "Statistique et Analyse de Données", "C", "Bien", 15.0, "21 septembre 2026"],
+    ["cand-2026-0146", "MS-2003-112004", "BIAOU T.", "Génie Informatique", "A2", "Passable", 11.2, "20 septembre 2026"],
+  ];
+  for (const row of seedCandidatures) insertCandidature.run(...row);
+}
+if ((db.prepare("SELECT COUNT(*) AS n FROM publications").get() as { n: number }).n === 0) {
+  const insertPublication = db.prepare(
+    `INSERT INTO publications (id, type, libelle, statut, updated_at) VALUES (?, ?, ?, ?, ?)`
+  );
+  const seedPublications: [string, string, string, string, string][] = [
+    ["pub-edt", "Emploi du temps", "Semestre 4 — Génie Informatique (Licence 2)", "Brouillon", "2026-09-24T09:00:00.000Z"],
+    ["pub-exam", "Calendrier d'examens", "Examens du semestre 4 — toutes filières", "Publié", "2026-09-20T09:00:00.000Z"],
+    ["pub-rattrapage", "Calendrier d'examens", "Sessions de rattrapage — semestre 3", "Publié", "2026-09-12T09:00:00.000Z"],
+    ["pub-soutenance", "Emploi du temps", "Calendrier des soutenances de projet industriel", "Brouillon", "2026-09-18T09:00:00.000Z"],
+  ];
+  for (const row of seedPublications) insertPublication.run(...row);
+}
+if ((db.prepare("SELECT COUNT(*) AS n FROM notes_validations").get() as { n: number }).n === 0) {
+  const insertNote = db.prepare(
+    `INSERT INTO notes_validations (id, ue, enseignant, effectif, moyenne_classe, statut, validated_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?)`
+  );
+  const seedNotes: [string, string, string, number, number, string, string | null][] = [
+    ["not-inf401", "INF401 — Algorithmique avancée", "Dr. BIAOU", 178, 13.2, "À valider", null],
+    ["not-inf402", "INF402 — Bases de données", "Pr. HOUNKPATIN", 178, 12.8, "À valider", null],
+    ["not-inf405", "INF405 — Systèmes d'exploitation", "Dr. GBAGUIDI", 176, 9.7, "Validée", "2026-09-20T09:00:00.000Z"],
+    ["not-inf407", "INF407 — Anglais technique", "Mme AHOUANSOU", 180, 14.1, "À valider", null],
+  ];
+  for (const row of seedNotes) insertNote.run(...row);
 }

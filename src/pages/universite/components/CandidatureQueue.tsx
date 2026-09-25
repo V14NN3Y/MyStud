@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { fileCandidatures, motifsRefus } from "@/mocks/universite";
+import { decideCandidature, listCandidatures, type ServerCandidature } from "@/lib/api";
 import type { AuditEvent } from "./AuditLog";
 export interface Dossier {
   id: string;
@@ -14,6 +15,7 @@ export interface Dossier {
   statut: string;
 }
 interface CandidatureQueueProps {
+  token: string | null;
   onAudit: (event: AuditEvent) => void;
 }
 const DECISION_STYLES: Record<string, string> = {
@@ -21,15 +23,39 @@ const DECISION_STYLES: Record<string, string> = {
   "Liste d'attente": "bg-accent-100 text-accent-900 border-accent-300",
   Refusée: "bg-foreground-200 text-foreground-600 border-foreground-300",
 };
+function toDossier(row: ServerCandidature): Dossier {
+  return {
+    id: row.id,
+    matricule: row.matricule,
+    nom: row.nom,
+    formation: row.formation,
+    serie: row.serie,
+    mention: row.mention,
+    moyenneBac: row.moyenne_bac,
+    dateDepot: row.date_depot,
+    statut: row.statut,
+  };
+}
 const stamp = () => `Aujourd'hui · ${new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}`;
-export default function CandidatureQueue({ onAudit }: CandidatureQueueProps) {
+export default function CandidatureQueue({ token, onAudit }: CandidatureQueueProps) {
   const { t } = useTranslation();
   const [rows, setRows] = useState<Dossier[]>(fileCandidatures as Dossier[]);
   const [modalId, setModalId] = useState<string | null>(null);
   const [motif, setMotif] = useState("");
   const [commentaire, setCommentaire] = useState("");
   const [erreur, setErreur] = useState("");
-  const appliquer = (id: string, decision: string, motifChoisi?: string) => {
+  // Falls back to the fileCandidatures mock (already the initial state) when
+  // there's no backend session — every decision below then stays local-only,
+  // exactly like before this feature was wired up.
+  useEffect(() => {
+    if (!token) return;
+    listCandidatures(token)
+      .then((serverRows) => setRows(serverRows.map(toDossier)))
+      .catch(() => {
+        // Keep whatever is already displayed (mock or previous fetch).
+      });
+  }, [token]);
+  const appliquer = (id: string, decision: string, motifChoisi?: string, commentaireChoisi?: string) => {
     const dossier = rows.find((r) => r.id === id);
     setRows((prev) => prev.map((r) => (r.id === id ? { ...r, statut: decision } : r)));
     onAudit({
@@ -43,13 +69,24 @@ export default function CandidatureQueue({ onAudit }: CandidatureQueueProps) {
       role: "Université",
       date: stamp(),
     });
+    if (!token) return;
+    decideCandidature(
+      token,
+      id,
+      decision as "Acceptée" | "Liste d'attente" | "Refusée",
+      motifChoisi || commentaireChoisi ? { motif: motifChoisi, commentaire: commentaireChoisi } : undefined
+    )
+      .then((row) => setRows((prev) => prev.map((r) => (r.id === id ? toDossier(row) : r))))
+      .catch(() => {
+        // The optimistic update above stands even if the backend call fails.
+      });
   };
   const confirmerRefus = () => {
     if (!motif) {
       setErreur(t("univ.cand.motifRequis"));
       return;
     }
-    if (modalId) appliquer(modalId, "Refusée", motif);
+    if (modalId) appliquer(modalId, "Refusée", motif, commentaire || undefined);
     setModalId(null);
     setMotif("");
     setCommentaire("");

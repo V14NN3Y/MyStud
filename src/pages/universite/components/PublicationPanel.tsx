@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { publicationsInstitution } from "@/mocks/universite";
+import { listPublications, togglePublication, type ServerPublication } from "@/lib/api";
+import { formatServerDate } from "@/lib/format";
 import type { AuditEvent } from "./AuditLog";
 interface Publication {
   id: string;
@@ -10,12 +12,24 @@ interface Publication {
   majLe: string;
 }
 interface PublicationPanelProps {
+  token: string | null;
   onAudit: (event: AuditEvent) => void;
 }
+function toPublication(row: ServerPublication): Publication {
+  return { id: row.id, type: row.type, libelle: row.libelle, statut: row.statut, majLe: formatServerDate(row.updated_at) };
+}
 const stamp = () => `Aujourd'hui · ${new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}`;
-export default function PublicationPanel({ onAudit }: PublicationPanelProps) {
+export default function PublicationPanel({ token, onAudit }: PublicationPanelProps) {
   const { t } = useTranslation();
   const [rows, setRows] = useState<Publication[]>(publicationsInstitution as Publication[]);
+  useEffect(() => {
+    if (!token) return;
+    listPublications(token)
+      .then((serverRows) => setRows(serverRows.map(toPublication)))
+      .catch(() => {
+        // Keep whatever is already displayed (mock or previous fetch).
+      });
+  }, [token]);
   const basculer = (id: string) => {
     const row = rows.find((r) => r.id === id);
     if (!row) return;
@@ -31,6 +45,12 @@ export default function PublicationPanel({ onAudit }: PublicationPanelProps) {
       role: "Université",
       date: stamp(),
     });
+    if (!token) return;
+    togglePublication(token, id)
+      .then((updated) => setRows((prev) => prev.map((r) => (r.id === id ? toPublication(updated) : r))))
+      .catch(() => {
+        // The optimistic update above stands even if the backend call fails.
+      });
   };
   return (
     <div className="rounded-lg border border-background-200 bg-background-50 p-5 md:p-6">

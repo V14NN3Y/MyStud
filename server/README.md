@@ -43,6 +43,17 @@ plupart des pages restent encore 100% démo.
   Exposé via `GET /api/notifications`, `PATCH /api/notifications/:id/read`,
   `PATCH /api/notifications/read-all`, `GET /api/notifications/preferences`,
   `PATCH /api/notifications/preferences/:categorie`.
+- **Workflows institutionnels de `/universite` persistants** (`src/db.ts`,
+  `src/routes/candidatures.ts`, `publications.ts`, `notesValidations.ts`) —
+  accepter/refuser/mettre en liste d'attente une candidature, publier un
+  emploi du temps, valider des notes : ces trois entités vivent maintenant
+  en base plutôt que dans l'état React de `CandidatureQueue`,
+  `PublicationPanel` et `NotesValidation`, qui repartait à zéro à chaque
+  rechargement. Protégé par `requireRole(...INSTITUTIONAL_ROLES)` (partagé
+  depuis `src/auth.ts`), comme le journal d'audit. Exposé via
+  `GET /api/candidatures`, `PATCH /api/candidatures/:id/decision`,
+  `GET /api/publications`, `PATCH /api/publications/:id/toggle`,
+  `GET /api/notes-validations`, `PATCH /api/notes-validations/:id/valider`.
 
 ## Intégration frontend
 
@@ -60,10 +71,27 @@ Le client API frontend vit dans `src/lib/api.ts` (racine du repo, pas dans
   fichier mock. Si le backend est indisponible, la liste reste vide (aucune
   fausse donnée) et `/notifications` affiche un bandeau "Backend
   indisponible" plutôt que de fabriquer un état.
-- **Pas encore branché** : le `RoleSwitcher` de `/universite` reste un
-  `useState` client (pas d'appel à `/api/auth/session`), le journal d'audit
-  affiché y est toujours le tableau mock en mémoire (pas `/api/audit`), et
-  aucune page n'utilise encore `/api/documents`.
+- **Branché** : `/universite` obtient un vrai jeton via
+  `POST /api/auth/session` à chaque changement de rôle (le `RoleSwitcher`
+  continue d'*offrir* un rôle pour la démo, mais chaque lecture/écriture
+  protégée passe désormais par ce jeton signé serveur, pas par un état
+  client). Le journal d'audit s'alimente réellement via `GET`/`POST
+  /api/audit`, et le module "Documents administratifs" (rôle Service de
+  scolarité) utilise `POST /api/documents` puis `GET
+  /api/documents/:id/link` pour générer un vrai lien de téléchargement
+  temporaire. Si le backend est indisponible, la page bascule sans erreur
+  sur l'état 100% démo précédent (bandeau "Mode démonstration locale").
+- **Branché** : `CandidatureQueue`, `PublicationPanel` et `NotesValidation`
+  (dans `/universite`) chargent leurs listes réelles dès qu'un jeton de
+  session existe, et chaque décision/publication/validation persiste via
+  l'API au lieu de rester dans l'état React du composant. Si le backend est
+  indisponible, chacun retombe sur son contenu mock d'origine (mode
+  démonstration locale, comme le reste de la page).
+- **Pas encore branché** : le catalogue des programmes de bourse
+  (`bourses.ts`) et le suivi des candidatures de bourse côté étudiant
+  (`/bourses/suivi`) restent des mocks statiques, de même que les
+  formations/établissements/facultés, les emplois, les annonces, la FAQ, le
+  profil étudiant et les tableaux de bord ministère.
 
 ## Ce qui n'est pas fait
 

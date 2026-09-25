@@ -6,9 +6,8 @@ import { createReadStream, existsSync } from "node:fs";
 import { join } from "node:path";
 import { db } from "../db.ts";
 import { env } from "../env.ts";
-import { requireRole, ROLES, type AuthedRequest } from "../auth.ts";
+import { requireRole, ROLES, INSTITUTIONAL_ROLES, type AuthedRequest } from "../auth.ts";
 export const documentsRouter = Router();
-const INSTITUTIONAL_ROLES = ["ministere", "direction", "universite", "faculte", "admin"] as const;
 const upload = multer({
   storage: multer.diskStorage({
     destination: join(env.dataDir, "documents"),

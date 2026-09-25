@@ -1,8 +1,7 @@
 import { Router } from "express";
 import { db } from "../db.ts";
-import { requireRole, type AuthedRequest } from "../auth.ts";
+import { requireRole, INSTITUTIONAL_ROLES, type AuthedRequest } from "../auth.ts";
 export const auditRouter = Router();
-const INSTITUTIONAL_ROLES = ["ministere", "direction", "universite", "faculte", "admin"] as const;
 interface AuditEventRow {
   id: number;
   action: string;

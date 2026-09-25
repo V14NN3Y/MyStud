@@ -6,17 +6,30 @@ export class ApiError extends Error {
     this.status = status;
   }
 }
-async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_URL}${path}`, {
-    ...init,
-    headers: { "content-type": "application/json", ...init?.headers },
-  });
+async function readJsonOrThrow<T>(res: Response): Promise<T> {
   if (!res.ok) {
     const body = await res.json().catch(() => ({ error: res.statusText }));
     throw new ApiError(body.error ?? res.statusText, res.status);
   }
   if (res.status === 204) return undefined as T;
   return res.json() as Promise<T>;
+}
+async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
+  const res = await fetch(`${API_URL}${path}`, {
+    ...init,
+    headers: { "content-type": "application/json", ...init?.headers },
+  });
+  return readJsonOrThrow<T>(res);
+}
+// multipart/form-data requests must NOT set their own content-type: the
+// browser needs to add the multipart boundary itself.
+async function apiFetchForm<T>(path: string, token: string, body: FormData): Promise<T> {
+  const res = await fetch(`${API_URL}${path}`, {
+    method: "POST",
+    headers: authHeader(token),
+    body,
+  });
+  return readJsonOrThrow<T>(res);
 }
 function authHeader(token: string) {
   return { authorization: `Bearer ${token}` };
@@ -105,5 +118,84 @@ export function postAuditEvent(token: string, action: string, cible: string) {
     method: "POST",
     headers: authHeader(token),
     body: JSON.stringify({ action, cible }),
+  });
+}
+// --- Documents ------------------------------------------------------
+export function uploadDocument(token: string, file: File, ownerMatricule: string) {
+  const form = new FormData();
+  form.append("file", file);
+  form.append("ownerMatricule", ownerMatricule);
+  return apiFetchForm<{ id: string }>("/api/documents", token, form);
+}
+export function getDocumentLink(token: string, documentId: string, matricule: string) {
+  return apiFetch<{ url: string; expiresInSeconds: number }>(
+    `/api/documents/${documentId}/link?matricule=${encodeURIComponent(matricule)}`,
+    { headers: authHeader(token) }
+  );
+}
+// --- Candidatures (espace université) ----------------------------------
+export interface ServerCandidature {
+  id: string;
+  matricule: string;
+  nom: string;
+  formation: string;
+  serie: string;
+  mention: string;
+  moyenne_bac: number;
+  date_depot: string;
+  statut: string;
+  motif_refus: string | null;
+  commentaire: string | null;
+  updated_at: string;
+}
+export function listCandidatures(token: string) {
+  return apiFetch<ServerCandidature[]>("/api/candidatures", { headers: authHeader(token) });
+}
+export function decideCandidature(
+  token: string,
+  id: string,
+  decision: "Acceptée" | "Liste d'attente" | "Refusée",
+  extra?: { motif?: string; commentaire?: string }
+) {
+  return apiFetch<ServerCandidature>(`/api/candidatures/${id}/decision`, {
+    method: "PATCH",
+    headers: authHeader(token),
+    body: JSON.stringify({ decision, ...extra }),
+  });
+}
+// --- Publications (espace université) -----------------------------------
+export interface ServerPublication {
+  id: string;
+  type: string;
+  libelle: string;
+  statut: string;
+  updated_at: string;
+}
+export function listPublications(token: string) {
+  return apiFetch<ServerPublication[]>("/api/publications", { headers: authHeader(token) });
+}
+export function togglePublication(token: string, id: string) {
+  return apiFetch<ServerPublication>(`/api/publications/${id}/toggle`, {
+    method: "PATCH",
+    headers: authHeader(token),
+  });
+}
+// --- Notes validations (espace université) -------------------------------
+export interface ServerNoteValidation {
+  id: string;
+  ue: string;
+  enseignant: string;
+  effectif: number;
+  moyenne_classe: number;
+  statut: string;
+  validated_at: string | null;
+}
+export function listNotesValidations(token: string) {
+  return apiFetch<ServerNoteValidation[]>("/api/notes-validations", { headers: authHeader(token) });
+}
+export function validateNotes(token: string, id: string) {
+  return apiFetch<ServerNoteValidation>(`/api/notes-validations/${id}/valider`, {
+    method: "PATCH",
+    headers: authHeader(token),
   });
 }

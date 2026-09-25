@@ -15,6 +15,21 @@ export const ROLES = [
   "admin",
 ] as const;
 export type Role = (typeof ROLES)[number];
+// Every role whose frontend modules can read or write the institutional
+// resources (audit log, documents, candidatures, publications, notes) —
+// mirrors which rolesInstitutionnels[].modules ever include one of
+// "candidatures" | "publications" | "notes" | "documents" | "audit" on the
+// frontend (src/mocks/universite.ts). Kept as one shared set, like the
+// frontend's own role list, rather than a bespoke matrix per resource.
+export const INSTITUTIONAL_ROLES = [
+  "ministere",
+  "direction",
+  "universite",
+  "faculte",
+  "scolarite",
+  "enseignant",
+  "admin",
+] as const;
 export function isRole(value: string): value is Role {
   return (ROLES as readonly string[]).includes(value);
 }

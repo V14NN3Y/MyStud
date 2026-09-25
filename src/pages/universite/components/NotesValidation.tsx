@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { validationsNotes } from "@/mocks/universite";
+import { listNotesValidations, validateNotes, type ServerNoteValidation } from "@/lib/api";
 import type { AuditEvent } from "./AuditLog";
 interface Validation {
   id: string;
@@ -11,12 +12,31 @@ interface Validation {
   statut: string;
 }
 interface NotesValidationProps {
+  token: string | null;
   onAudit: (event: AuditEvent) => void;
 }
+function toValidation(row: ServerNoteValidation): Validation {
+  return {
+    id: row.id,
+    ue: row.ue,
+    enseignant: row.enseignant,
+    effectif: row.effectif,
+    moyenneClasse: row.moyenne_classe,
+    statut: row.statut,
+  };
+}
 const stamp = () => `Aujourd'hui · ${new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}`;
-export default function NotesValidation({ onAudit }: NotesValidationProps) {
+export default function NotesValidation({ token, onAudit }: NotesValidationProps) {
   const { t } = useTranslation();
   const [rows, setRows] = useState<Validation[]>(validationsNotes as Validation[]);
+  useEffect(() => {
+    if (!token) return;
+    listNotesValidations(token)
+      .then((serverRows) => setRows(serverRows.map(toValidation)))
+      .catch(() => {
+        // Keep whatever is already displayed (mock or previous fetch).
+      });
+  }, [token]);
   const valider = (id: string) => {
     const row = rows.find((r) => r.id === id);
     setRows((prev) => prev.map((r) => (r.id === id ? { ...r, statut: "Validée" } : r)));
@@ -28,6 +48,12 @@ export default function NotesValidation({ onAudit }: NotesValidationProps) {
       role: "Enseignant",
       date: stamp(),
     });
+    if (!token) return;
+    validateNotes(token, id)
+      .then((updated) => setRows((prev) => prev.map((r) => (r.id === id ? toValidation(updated) : r))))
+      .catch(() => {
+        // The optimistic update above stands even if the backend call fails.
+      });
   };
   return (
     <div className="rounded-lg border border-background-200 bg-background-50 p-5 md:p-6">
