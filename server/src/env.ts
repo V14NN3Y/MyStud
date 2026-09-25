@@ -24,7 +24,11 @@ export const env = {
   // invalidate/reject links other instances issued.
   downloadLinkSecret: isProduction
     ? required("DOWNLOAD_LINK_SECRET", "")
-    : (process.env.DOWNLOAD_LINK_SECRET ?? randomBytes(32).toString("hex")),
+    // `||`, not `??`: a present-but-blank DOWNLOAD_LINK_SECRET= line in .env
+    // (e.g. copied from .env.example and left unfilled) is an empty string,
+    // not undefined, so `??` would use it as-is and jwt.sign() would reject
+    // it with "secretOrPrivateKey must have a value".
+    : (process.env.DOWNLOAD_LINK_SECRET || randomBytes(32).toString("hex")),
   dataDir: process.env.DATA_DIR ?? new URL("../data", import.meta.url).pathname,
   // Optional on purpose: without it, the email channel falls back to logging
   // instead of sending (see src/notifications/channel.ts). Any Resend
