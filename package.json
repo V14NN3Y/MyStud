@@ -43,9 +43,3 @@
     "jiti": "^2.6.1"
   }
 }
-
-// Deux ou trois trucs que je remarque au passage, au cas où :
-
-//     Il y a firebase dans les dépendances, alors qu’on tourne sur Supabase/Readdy Backend côté projet — c’est un reliquat probablement inutile. Et y’a aussi @stripe/react-stripe-js, alors que Stripe n’est pas branché. Ça n’casse rien, mais ça alourdit le bundle un peu.
-
-//     lucide-react traîne aussi, alors qu’on utilise les icônes Remix Icon via CDN. Pareil, pas gênant mais redondant.
