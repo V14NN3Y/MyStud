@@ -1,8 +1,8 @@
 export const situationEtudiante = {
-  formationId: "genie-informatique-epac",
+  formationId: "genie-informatique-telecom-epac",
   etablissementId: "uac",
   faculte: "École Polytechnique d'Abomey-Calavi (EPAC)",
-  formation: "Génie Informatique",
+  formation: "Génie Informatique et Télécom",
   etablissement: "Université d'Abomey-Calavi",
   ville: "Abomey-Calavi",
   niveau: "Licence 2",

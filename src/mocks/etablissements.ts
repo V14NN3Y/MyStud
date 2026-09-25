@@ -1,3 +1,7 @@
+// Les 4 universités publiques du Bénin (Guide MESRS 2026-2027). IMSP, ENS de
+// Porto-Novo, INE et ENSPD sont des établissements rattachés à l'UAC (ou à
+// l'UP pour l'ENSPD), pas des universités indépendantes — voir
+// src/mocks/facultes.ts pour le détail de leurs formations.
 export const etablissements = [
   {
     id: "uac",
@@ -6,13 +10,13 @@ export const etablissements = [
     ville: "Abomey-Calavi",
     type: "Public",
     fondation: 1970,
-    effectif: 62000,
-    formationsCount: 148,
+    effectif: 68730,
+    formationsCount: 26,
     domaine: "Pluridisciplinaire",
     statut: "Vérifiée",
-    majLe: "12 août 2026",
+    majLe: "20 août 2026",
     description:
-      "Première université publique du Bénin et principal pôle d'enseignement supérieur du pays, l'UAC regroupe plus de vingt facultés, écoles et instituts couvrant l'ensemble des grands domaines de formation.",
+      "Première université publique du Bénin et principal pôle d'enseignement supérieur du pays, l'UAC regroupe 26 facultés, écoles et instituts couvrant l'ensemble des grands domaines de formation, dont l'IMSP, l'INE et l'ENS de Porto-Novo.",
     image:
       "https://readdy.ai/api/search-image?query=modern african university campus building with green lawns and palm trees under warm sunlight, clean architectural photography, warm neutral tones&width=900&height=640&seq=mystud-etab-uac-01&orientation=landscape&nocache=false",
     site: "www.uac.bj",
@@ -25,13 +29,13 @@ export const etablissements = [
     ville: "Parakou",
     type: "Public",
     fondation: 2001,
-    effectif: 18500,
-    formationsCount: 62,
+    effectif: 19260,
+    formationsCount: 9,
     domaine: "Pluridisciplinaire",
     statut: "Vérifiée",
-    majLe: "9 août 2026",
+    majLe: "18 août 2026",
     description:
-      "Située au cœur du septentrion, l'Université de Parakou propose des formations en agronomie, sciences juridiques, sciences économiques et gestion, ainsi qu'en lettres et sciences humaines.",
+      "Située au cœur du septentrion, l'Université de Parakou propose des formations en agronomie, médecine, sciences juridiques, sciences économiques et gestion, ainsi qu'en lettres et sciences humaines, sur 9 établissements dont l'ENSPD.",
     image:
       "https://readdy.ai/api/search-image?query=northern benin university campus with modern low buildings and dry savanna landscape, warm golden afternoon light, clean editorial architecture photography&width=900&height=640&seq=mystud-etab-up-02&orientation=landscape&nocache=false",
     site: "www.univ-parakou.bj",
@@ -45,12 +49,12 @@ export const etablissements = [
     type: "Public",
     fondation: 2009,
     effectif: 12400,
-    formationsCount: 44,
+    formationsCount: 8,
     domaine: "Sciences & Ingénierie",
     statut: "Vérifiée",
-    majLe: "5 août 2026",
+    majLe: "17 août 2026",
     description:
-      "Réseau national dédié aux sciences appliquées, à la technologie, à l'ingénierie et aux mathématiques, l'UNSTIM forme les futurs cadres techniques du Bénin sur plusieurs campus.",
+      "Réseau national dédié aux sciences appliquées, à la technologie, à l'ingénierie et aux mathématiques, l'UNSTIM forme les futurs cadres techniques du Bénin sur 8 établissements répartis entre Abomey, Lokossa et Natitingou.",
     image:
       "https://readdy.ai/api/search-image?query=modern engineering school campus with laboratory buildings and clear sky, minimal contemporary architecture, warm stone and green tones&width=900&height=640&seq=mystud-etab-unstim-03&orientation=landscape&nocache=false",
     site: "www.unstim.bj",
@@ -64,91 +68,15 @@ export const etablissements = [
     type: "Public",
     fondation: 2009,
     effectif: 6800,
-    formationsCount: 28,
+    formationsCount: 9,
     domaine: "Agronomie & Sciences du vivant",
     statut: "Vérifiée",
-    majLe: "2 août 2026",
+    majLe: "16 août 2026",
     description:
-      "Établissement public de référence pour la formation agronomique, l'UNA forme les ingénieurs et techniciens de la production agricole, de l'agroalimentaire et de la gestion des ressources naturelles.",
+      "Établissement public de référence pour la formation agronomique, l'UNA forme les ingénieurs et techniciens de la production agricole, de l'agroalimentaire et de la gestion des ressources naturelles à travers 9 écoles spécialisées.",
     image:
       "https://readdy.ai/api/search-image?query=agricultural university campus surrounded by green cultivated fields and experimental farm plots, warm natural light, clean documentary aerial photography&width=900&height=640&seq=mystud-etab-una-04&orientation=landscape&nocache=false",
     site: "www.una.bj",
     contact: "scolarite@una.bj",
-  },
-  {
-    id: "imsp",
-    nom: "Institut de Mathématiques et de Sciences Physiques",
-    sigle: "IMSP",
-    ville: "Dangbo",
-    type: "Public",
-    fondation: 1988,
-    effectif: 1450,
-    formationsCount: 12,
-    domaine: "Sciences fondamentales",
-    statut: "Vérifiée",
-    majLe: "28 juillet 2026",
-    description:
-      "Institut de recherche et de formation de troisième cycle en mathématiques et en physique, l'IMSP accueille des étudiants de toute la sous-région dans un cadre académique exigeant.",
-    image:
-      "https://readdy.ai/api/search-image?query=quiet research institute building surrounded by tropical trees, calm academic campus atmosphere, warm soft morning light, editorial photography&width=900&height=640&seq=mystud-etab-imsp-05&orientation=landscape&nocache=false",
-    site: "www.imsp-uac.org",
-    contact: "secretariat@imsp-uac.org",
-  },
-  {
-    id: "ens",
-    nom: "École Normale Supérieure de Porto-Novo",
-    sigle: "ENS",
-    ville: "Porto-Novo",
-    type: "Public",
-    fondation: 1971,
-    effectif: 4300,
-    formationsCount: 24,
-    domaine: "Sciences de l'éducation",
-    statut: "Vérifiée",
-    majLe: "30 juillet 2026",
-    description:
-      "L'ENS de Porto-Novo forme les enseignants, conseillers pédagogiques et cadres de l'éducation du Bénin, avec une forte composante de didactique et de recherche en sciences de l'éducation.",
-    image:
-      "https://readdy.ai/api/search-image?query=historic colonial style teacher training college building with arched windows, shaded courtyard with bougainvillea, warm afternoon light&width=900&height=640&seq=mystud-etab-ens-06&orientation=landscape&nocache=false",
-    site: "www.ens-portonovo.bj",
-    contact: "direction@ens-portonovo.bj",
-  },
-  {
-    id: "ene",
-    nom: "Institut National de l'Eau",
-    sigle: "INE",
-    ville: "Abomey-Calavi",
-    type: "Public",
-    fondation: 2018,
-    effectif: 980,
-    formationsCount: 9,
-    domaine: "Sciences & Ingénierie",
-    statut: "Vérifiée",
-    majLe: "25 juillet 2026",
-    description:
-      "Institut dédié à la gestion de l'eau, de l'assainissement et de l'environnement, l'INE propose des formations techniques et de master en hydraulique et en génie de l'environnement.",
-    image:
-      "https://readdy.ai/api/search-image?query=technical institute campus with water treatment research pond and modern labs, green landscaping, clear warm daylight&width=900&height=640&seq=mystud-etab-ine-07&orientation=landscape&nocache=false",
-    site: "www.ine-uac.bj",
-    contact: "contact@ine-uac.bj",
-  },
-  {
-    id: "enspd",
-    nom: "École Nationale de la Statistique et de la Démographie",
-    sigle: "ENSPD",
-    ville: "Abomey-Calavi",
-    type: "Public",
-    fondation: 2013,
-    effectif: 760,
-    formationsCount: 7,
-    domaine: "Économie & Statistique",
-    statut: "Vérifiée",
-    majLe: "22 juillet 2026",
-    description:
-      "L'ENSPD forme les statisticiens, démographes et analystes de données dont les administrations publiques et les entreprises béninoises ont besoin pour piloter leurs politiques.",
-    image:
-      "https://readdy.ai/api/search-image?query=modern data science school building with glass facade and geometric design, warm beige concrete, clean architecture photography&width=900&height=640&seq=mystud-etab-enspd-08&orientation=landscape&nocache=false",
-    site: "www.enspd.bj",
-    contact: "scolarite@enspd.bj",
   },
 ];
