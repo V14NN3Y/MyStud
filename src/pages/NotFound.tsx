@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 export default function NotFound() {
   const location = useLocation();
-<br>
   return (
     <div className="relative flex flex-col items-center justify-center h-screen text-center px-4">
       <h1 className="absolute bottom-0 text-9xl md:text-[12rem] font-black text-gray-50 select-none pointer-events-none z-0">
@@ -15,13 +14,3 @@ export default function NotFound() {
     </div>
   );
 }
-{/* 
- Genre :
-
-    la remettre en français avec un message clair (« Cette page n’existe pas ou n’a pas encore été créée »),
-
-    garder la navbar et le footer MyStud pour rester cohérent,
-
-    ajouter 2-3 raccourcis utiles (Accueil, Catalogue des formations, FAQ),
-
-    et pourquoi pas afficher le chemin demandé discrètement. */}
