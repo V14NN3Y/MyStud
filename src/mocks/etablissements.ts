@@ -18,7 +18,7 @@ export const etablissements = [
     description:
       "Première université publique du Bénin et principal pôle d'enseignement supérieur du pays, l'UAC regroupe 26 facultés, écoles et instituts couvrant l'ensemble des grands domaines de formation, dont l'IMSP, l'INE et l'ENS de Porto-Novo.",
     image:
-      "https://readdy.ai/api/search-image?query=modern african university campus building with green lawns and palm trees under warm sunlight, clean architectural photography, warm neutral tones&width=900&height=640&seq=mystud-etab-uac-01&orientation=landscape&nocache=false",
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/University_of_Benin_Faculty_building_front_view.jpg/1280px-University_of_Benin_Faculty_building_front_view.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" /* University of Benin Faculty building front view.jpg — Wikimedia Commons (CC BY-SA 4.0) */,
     site: "www.uac.bj",
     contact: "scolarite@uac.bj",
   },
@@ -37,7 +37,7 @@ export const etablissements = [
     description:
       "Située au cœur du septentrion, l'Université de Parakou propose des formations en agronomie, médecine, sciences juridiques, sciences économiques et gestion, ainsi qu'en lettres et sciences humaines, sur 9 établissements dont l'ENSPD.",
     image:
-      "https://readdy.ai/api/search-image?query=northern benin university campus with modern low buildings and dry savanna landscape, warm golden afternoon light, clean editorial architecture photography&width=900&height=640&seq=mystud-etab-up-02&orientation=landscape&nocache=false",
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Universit%C3%A9_de_Parakou.jpg/1280px-Universit%C3%A9_de_Parakou.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" /* Université de Parakou.jpg — Wikimedia Commons (CC BY-SA 4.0) */,
     site: "www.univ-parakou.bj",
     contact: "scolarite@univ-parakou.bj",
   },
@@ -56,7 +56,7 @@ export const etablissements = [
     description:
       "Réseau national dédié aux sciences appliquées, à la technologie, à l'ingénierie et aux mathématiques, l'UNSTIM forme les futurs cadres techniques du Bénin sur 8 établissements répartis entre Abomey, Lokossa et Natitingou.",
     image:
-      "https://readdy.ai/api/search-image?query=modern engineering school campus with laboratory buildings and clear sky, minimal contemporary architecture, warm stone and green tones&width=900&height=640&seq=mystud-etab-unstim-03&orientation=landscape&nocache=false",
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Campus_Building_ITS_Engineering_College.jpg/1280px-Campus_Building_ITS_Engineering_College.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" /* Campus Building ITS Engineering College.jpg — Wikimedia Commons (CC BY-SA 4.0) */,
     site: "www.unstim.bj",
     contact: "info@unstim.bj",
   },
@@ -75,7 +75,7 @@ export const etablissements = [
     description:
       "Établissement public de référence pour la formation agronomique, l'UNA forme les ingénieurs et techniciens de la production agricole, de l'agroalimentaire et de la gestion des ressources naturelles à travers 9 écoles spécialisées.",
     image:
-      "https://readdy.ai/api/search-image?query=agricultural university campus surrounded by green cultivated fields and experimental farm plots, warm natural light, clean documentary aerial photography&width=900&height=640&seq=mystud-etab-una-04&orientation=landscape&nocache=false",
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Rice_Fields1.jpg/1280px-Rice_Fields1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" /* Rice Fields1.jpg — Wikimedia Commons (CC BY-SA 4.0) */,
     site: "www.una.bj",
     contact: "scolarite@una.bj",
   },

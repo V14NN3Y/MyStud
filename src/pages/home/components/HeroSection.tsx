@@ -13,8 +13,8 @@ export default function HeroSection() {
   return (
     <section className="relative flex w-full items-center justify-center overflow-hidden h-[600px] md:h-[720px]">
       <img
-        src="https://readdy.ai/api/search-image?query=stylized abstract illustration of west african university campus with modern buildings, students silhouettes and palm trees, warm green gold and terracotta gradient tones, painterly editorial art with soft light&width=1920&height=1080&seq=mystud-hero-main-01&orientation=landscape&nocache=false"
-        alt="Campus universitaire stylisé du Bénin avec les couleurs du drapeau"
+        src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/DSC_6983_A_calm_lakeside_view_with_modern_campus_buildings_and_palms_lining_the_opposite_shore_under_a_clear_blue_sky.jpg/1280px-DSC_6983_A_calm_lakeside_view_with_modern_campus_buildings_and_palms_lining_the_opposite_shore_under_a_clear_blue_sky.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" /* DSC 6983 A calm lakeside view with modern campus buildings and palms lining the opposite shore under a clear blue sky.jpg — Wikimedia Commons (CC BY-SA 4.0) */
+        alt="Campus universitaire moderne avec bâtiments, palmiers et plan d'eau"
         title="MyStud Bénin portail de l'enseignement supérieur"
         className="absolute inset-0 h-full w-full object-cover object-top"
       />

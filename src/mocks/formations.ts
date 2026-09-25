@@ -27,7 +27,8 @@ export const formations = [
     description:
       "Formation de l'IRSP consacrée à la santé communautaire, à la surveillance épidémiologique et à l'hygiène du milieu, avec des stages en centres de santé et services d'hygiène publique.",
     image:
-      "https://readdy.ai/api/search-image?query=african public health workers in a community outreach session, warm natural light, clean documentary photography&width=900&height=640&seq=mystud-form-sante-irsp&orientation=landscape&nocache=false",
+      // Community health worker in Togo (8329492567).jpg — Wikimedia Commons (Public domain)
+      "https://upload.wikimedia.org/wikipedia/commons/c/cd/Community_health_worker_in_Togo_%288329492567%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   },
   {
     id: "anglais-flash-adjarra",
@@ -51,7 +52,8 @@ export const formations = [
     description:
       "Licence d'anglais orientée vers l'interprétariat, le tourisme et l'enseignement, dispensée sur le campus de FLASH-Adjarra.",
     image:
-      "https://readdy.ai/api/search-image?query=african university students practising english conversation in a language lab, warm daylight, editorial photography&width=900&height=640&seq=mystud-form-anglais-adjarra&orientation=landscape&nocache=false",
+      // Classroom in Goma, Eastern DRC (25765237378).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Classroom_in_Goma%2C_Eastern_DRC_%2825765237378%29.jpg/960px-Classroom_in_Goma%2C_Eastern_DRC_%2825765237378%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "prepa-mpsi-pcsi-imsp",
@@ -75,7 +77,8 @@ export const formations = [
     description:
       "Classes préparatoires scientifiques de l'IMSP en mathématiques, physique et sciences de l'ingénieur, préparant aux concours des grandes écoles d'ingénieurs et aux masters scientifiques.",
     image:
-      "https://readdy.ai/api/search-image?query=research blackboard covered with mathematical equations in a quiet institute classroom, warm light through tropical trees, still editorial photography&width=900&height=640&seq=mystud-form-mathematiques-05&orientation=landscape&nocache=false",
+      // Laser experiment - Photonics Laboratory - Physics Department - Ateneo de Manila University.jpg — Wikimedia Commons (CC BY 2.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Laser_experiment_-_Photonics_Laboratory_-_Physics_Department_-_Ateneo_de_Manila_University.jpg/960px-Laser_experiment_-_Photonics_Laboratory_-_Physics_Department_-_Ateneo_de_Manila_University.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "anglais-fllac",
@@ -99,7 +102,8 @@ export const formations = [
     description:
       "Licence d'anglais de la FLLAC, avec un fort volet pratique de l'oral et de la traduction, ouvrant sur l'enseignement, le tourisme et l'édition.",
     image:
-      "https://readdy.ai/api/search-image?query=university students reading english literature books in a bright library, warm tones, documentary photography&width=900&height=640&seq=mystud-form-anglais-fllac&orientation=landscape&nocache=false",
+      // Classroom in Goma, Eastern DRC (25765237378).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Classroom_in_Goma%2C_Eastern_DRC_%2825765237378%29.jpg/960px-Classroom_in_Goma%2C_Eastern_DRC_%2825765237378%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "arts-plastiques-inmaac",
@@ -123,7 +127,8 @@ export const formations = [
     description:
       "Formation aux arts plastiques et au design de l'INMAAC : dessin, peinture, sculpture et arts appliqués, avec ateliers pratiques encadrés par des artistes professionnels.",
     image:
-      "https://readdy.ai/api/search-image?query=art students painting and sculpting in a bright creative studio, warm tones, documentary photography&width=900&height=640&seq=mystud-form-arts-inmaac&orientation=landscape&nocache=false",
+      // Annual exhibition of RU Fine Arts.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Annual_exhibition_of_RU_Fine_Arts.jpg/960px-Annual_exhibition_of_RU_Fine_Arts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "environnement-sante-cifred",
@@ -147,7 +152,8 @@ export const formations = [
     description:
       "Le CIFRED forme aux enjeux croisés de l'environnement, de l'hygiène et de la santé publique, avec un ancrage fort dans la recherche interfacultaire de l'UAC.",
     image:
-      "https://readdy.ai/api/search-image?query=environmental health inspectors examining a water sample outdoors, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-cifred&orientation=landscape&nocache=false",
+      // Community health worker in Togo (8329492567).jpg — Wikimedia Commons (Public domain)
+      "https://upload.wikimedia.org/wikipedia/commons/c/cd/Community_health_worker_in_Togo_%288329492567%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   },
   {
     id: "gestion-cadre-vie-igate",
@@ -171,7 +177,8 @@ export const formations = [
     description:
       "Formation de l'IGATE à l'aménagement du territoire et à la gestion du cadre de vie, entre urbanisme, environnement et politiques publiques locales.",
     image:
-      "https://readdy.ai/api/search-image?query=urban planners reviewing a city development map outdoors, warm daylight, editorial photography&width=900&height=640&seq=mystud-form-igate&orientation=landscape&nocache=false",
+      // City planning, aerial (6046162656).jpg — Wikimedia Commons (CC BY-SA 2.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/City_planning%2C_aerial_%286046162656%29.jpg/960px-City_planning%2C_aerial_%286046162656%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "sciences-infirmieres-inemes",
@@ -195,7 +202,8 @@ export const formations = [
     description:
       "Formation initiale d'infirmier de l'INeMES, alliant enseignements théoriques et stages cliniques progressifs en milieu hospitalier. Admission sur concours.",
     image:
-      "https://readdy.ai/api/search-image?query=nursing students practising clinical care techniques in a training ward, warm indoor light, documentary photography&width=900&height=640&seq=mystud-form-inemes&orientation=landscape&nocache=false",
+      // Specialized training strengthens LRMC care for critically-ill patients (6011495).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Specialized_training_strengthens_LRMC_care_for_critically-ill_patients_%286011495%29.jpg/960px-Specialized_training_strengthens_LRMC_care_for_critically-ill_patients_%286011495%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "hydraulique-assainissement-ine",
@@ -219,7 +227,8 @@ export const formations = [
     description:
       "Formation de l'INE aux techniques d'adduction d'eau potable et d'assainissement, avec accès à des plateaux techniques de traitement de l'eau.",
     image:
-      "https://readdy.ai/api/search-image?query=water engineering students inspecting a clean water treatment basin with technical equipment, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-eau-10&orientation=landscape&nocache=false",
+      // LRPI HandPump Installation.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/LRPI_HandPump_Installation.jpg/960px-LRPI_HandPump_Installation.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "analyse-informatique-eneam",
@@ -243,7 +252,8 @@ export const formations = [
     description:
       "Formation de l'ENEAM en analyse et programmation informatique, orientée développement d'applications et administration de réseaux d'entreprise.",
     image:
-      "https://readdy.ai/api/search-image?query=african engineering students coding in a modern computer laboratory, warm natural light, clean editorial photography, green and wood tones&width=900&height=640&seq=mystud-form-genie-informatique-01&orientation=landscape&nocache=false",
+      // Information Computer Technology (ICT) Lab (4874426519).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Information_Computer_Technology_%28ICT%29_Lab_%284874426519%29.jpg/960px-Information_Computer_Technology_%28ICT%29_Lab_%284874426519%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "gestion-patrimoine-epa",
@@ -267,7 +277,8 @@ export const formations = [
     description:
       "L'École du Patrimoine Africain forme des spécialistes de la conservation et de la valorisation du patrimoine culturel béninois et africain.",
     image:
-      "https://readdy.ai/api/search-image?query=museum curator examining historical african artifacts in a heritage collection, warm soft light, editorial photography&width=900&height=640&seq=mystud-form-epa&orientation=landscape&nocache=false",
+      // Artifact at the Manhyia Palace Museum.jpg — Wikimedia Commons (CC BY 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Artifact_at_the_Manhyia_Palace_Museum.jpg/960px-Artifact_at_the_Manhyia_Palace_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "psychologie-fashs",
@@ -291,7 +302,8 @@ export const formations = [
     description:
       "Licence de psychologie de la FASHS Calavi, ouvrant sur l'accompagnement éducatif spécialisé et la prise en charge psychologique en milieu institutionnel.",
     image:
-      "https://readdy.ai/api/search-image?query=psychology students in a discussion circle with a counselor, warm natural light, documentary photography&width=900&height=640&seq=mystud-form-psychologie-fashs&orientation=landscape&nocache=false",
+      // Psychologist at work.jpg — Wikimedia Commons (CC0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Psychologist_at_work.jpg/960px-Psychologist_at_work.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "journalisme-enstic",
@@ -315,7 +327,8 @@ export const formations = [
     description:
       "L'ENSTIC forme les journalistes et professionnels des médias du Bénin sur concours, avec des rédactions-écoles en presse écrite, radio et télévision.",
     image:
-      "https://readdy.ai/api/search-image?query=journalism students recording a news segment in a small studio, warm indoor light, documentary photography&width=900&height=640&seq=mystud-form-enstic&orientation=landscape&nocache=false",
+      // Sunny Radio interview 20120823 1.jpg — Wikimedia Commons (CC BY 2.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Sunny_Radio_interview_20120823_1.jpg/960px-Sunny_Radio_interview_20120823_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "administration-generale-enam",
@@ -339,7 +352,8 @@ export const formations = [
     description:
       "Formation de l'ENAM aux carrières de l'administration publique béninoise : gestion administrative, affaires étrangères et inspection du travail.",
     image:
-      "https://readdy.ai/api/search-image?query=public administration students in a formal seminar room, warm daylight, editorial photography&width=900&height=640&seq=mystud-form-enam&orientation=landscape&nocache=false",
+      // Law School Classes-24 (7116446131).jpg — Wikimedia Commons (CC BY 2.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Law_School_Classes-24_%287116446131%29.jpg/960px-Law_School_Classes-24_%287116446131%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "genie-logiciel-ifri",
@@ -363,7 +377,8 @@ export const formations = [
     description:
       "L'IFRI forme des spécialistes du génie logiciel capables de concevoir et développer des applications métiers robustes, avec un fort ancrage en auto-entreprenariat numérique.",
     image:
-      "https://readdy.ai/api/search-image?query=software engineering students collaborating around laptops on a code review, warm natural light, editorial photography&width=900&height=640&seq=mystud-form-ifri&orientation=landscape&nocache=false",
+      // Information Computer Technology (ICT) Lab (4874426519).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Information_Computer_Technology_%28ICT%29_Lab_%284874426519%29.jpg/960px-Information_Computer_Technology_%28ICT%29_Lab_%284874426519%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "production-vegetale-fsa",
@@ -387,7 +402,8 @@ export const formations = [
     description:
       "Formation agronomique de la FSA centrée sur la production végétale, la protection des cultures et la gestion durable des exploitations agricoles.",
     image:
-      "https://readdy.ai/api/search-image?query=african agricultural students examining healthy vegetable crops in an experimental field, green plants and warm sunlight, documentary photography&width=900&height=640&seq=mystud-form-agronomie-04&orientation=landscape&nocache=false",
+      // Farmer doing mixed cropping.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Farmer_doing_mixed_cropping.jpg/960px-Farmer_doing_mixed_cropping.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "medecine-generale-fss",
@@ -411,7 +427,8 @@ export const formations = [
     description:
       "Cycle complet de formation médicale de la FSS, articulant sciences fondamentales, enseignement clinique hospitalier et stages en centres de santé urbains et ruraux.",
     image:
-      "https://readdy.ai/api/search-image?query=african medical students in white coats during a clinical training session in a bright hospital corridor, warm natural light, clean documentary photography&width=900&height=640&seq=mystud-form-medecine-03&orientation=landscape&nocache=false",
+      // Second year medical students from the UPNG School of Medicine and Health Science. Port Moresby General Hospital, PNG. (10720600104).jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Second_year_medical_students_from_the_UPNG_School_of_Medicine_and_Health_Science._Port_Moresby_General_Hospital%2C_PNG._%2810720600104%29.jpg/960px-Second_year_medical_students_from_the_UPNG_School_of_Medicine_and_Health_Science._Port_Moresby_General_Hospital%2C_PNG._%2810720600104%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "genie-informatique-telecom-epac",
@@ -435,7 +452,8 @@ export const formations = [
     description:
       "Formation d'ingénierie informatique et télécoms de l'EPAC orientée réseaux, systèmes embarqués et maintenance industrielle, avec stage professionnel obligatoire en entreprise.",
     image:
-      "https://readdy.ai/api/search-image?query=african engineering students working on network equipment in a telecom laboratory, warm natural light, clean editorial photography&width=900&height=640&seq=mystud-form-genie-informatique-epac&orientation=landscape&nocache=false",
+      // Information Computer Technology (ICT) Lab (4874426519).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Information_Computer_Technology_%28ICT%29_Lab_%284874426519%29.jpg/960px-Information_Computer_Technology_%28ICT%29_Lab_%284874426519%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "commerce-international-herci",
@@ -459,7 +477,8 @@ export const formations = [
     description:
       "La HERCI forme aux métiers du commerce international et de la logistique portuaire, en lien avec le port autonome de Cotonou.",
     image:
-      "https://readdy.ai/api/search-image?query=international trade students studying shipping logistics charts, warm daylight, editorial photography&width=900&height=640&seq=mystud-form-herci&orientation=landscape&nocache=false",
+      // FEMA - 39205 - FEMA workers at a meeting in Puerto Rico.jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/FEMA_-_39205_-_FEMA_workers_at_a_meeting_in_Puerto_Rico.jpg/960px-FEMA_-_39205_-_FEMA_workers_at_a_meeting_in_Puerto_Rico.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "eps-injeps",
@@ -483,7 +502,8 @@ export const formations = [
     description:
       "Formation aux métiers de l'enseignement du sport et de l'entraînement sportif de l'INJEPS, admission sur concours avec épreuve pratique EPS.",
     image:
-      "https://readdy.ai/api/search-image?query=physical education students training on an outdoor sports field, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-injeps&orientation=landscape&nocache=false",
+      // Cours Eps2.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Cours_Eps2.jpg/960px-Cours_Eps2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "anglais-ens-portonovo",
@@ -507,7 +527,8 @@ export const formations = [
     description:
       "L'ENS de Porto-Novo forme sur concours les futurs professeurs adjoints d'anglais des collèges et lycées, avec un solide volet didactique.",
     image:
-      "https://readdy.ai/api/search-image?query=teacher training session with students practising a classroom lesson on a bright blackboard, warm natural light, clean documentary photography&width=900&height=640&seq=mystud-form-education-09&orientation=landscape&nocache=false",
+      // Classroom in Goma, Eastern DRC (25765237378).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Classroom_in_Goma%2C_Eastern_DRC_%2825765237378%29.jpg/960px-Classroom_in_Goma%2C_Eastern_DRC_%2825765237378%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "droit-fadesp",
@@ -531,7 +552,8 @@ export const formations = [
     description:
       "Formation en droit constitutionnel, administratif, international public et libertés fondamentales, complétée par des travaux dirigés et des simulations de plaidoirie.",
     image:
-      "https://readdy.ai/api/search-image?query=law students reading legal codes and taking notes in a traditional lecture hall, warm ambient light, clean documentary photography&width=900&height=640&seq=mystud-form-droit-08&orientation=landscape&nocache=false",
+      // Law School Classes-24 (7116446131).jpg — Wikimedia Commons (CC BY 2.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Law_School_Classes-24_%287116446131%29.jpg/960px-Law_School_Classes-24_%287116446131%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "economie-gestion-faseg",
@@ -555,7 +577,8 @@ export const formations = [
     description:
       "Parcours généraliste en économie, comptabilité, finance et management. La formation combine cours magistraux, études de cas et stage en entreprise ou en administration.",
     image:
-      "https://readdy.ai/api/search-image?query=african business students working on financial charts and laptops in a bright university library, warm earth tones, clean editorial photography&width=900&height=640&seq=mystud-form-economie-07&orientation=landscape&nocache=false",
+      // FEMA - 39205 - FEMA workers at a meeting in Puerto Rico.jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/FEMA_-_39205_-_FEMA_workers_at_a_meeting_in_Puerto_Rico.jpg/960px-FEMA_-_39205_-_FEMA_workers_at_a_meeting_in_Puerto_Rico.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "physique-chimie-fast",
@@ -579,7 +602,8 @@ export const formations = [
     description:
       "Licence couvrant mécanique, électricité, thermodynamique, optique et chimie générale, avec un équipement expérimental rénové sur le campus d'Abomey-Calavi.",
     image:
-      "https://readdy.ai/api/search-image?query=physics students conducting an experiment with scientific apparatus in a university laboratory, warm indoor lighting, clean editorial photography&width=900&height=640&seq=mystud-form-physique-06&orientation=landscape&nocache=false",
+      // Laser experiment - Photonics Laboratory - Physics Department - Ateneo de Manila University.jpg — Wikimedia Commons (CC BY 2.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Laser_experiment_-_Photonics_Laboratory_-_Physics_Department_-_Ateneo_de_Manila_University.jpg/960px-Laser_experiment_-_Photonics_Laboratory_-_Physics_Department_-_Ateneo_de_Manila_University.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "langue-chinoise-confucius",
@@ -603,7 +627,8 @@ export const formations = [
     description:
       "L'Institut Confucius de l'UAC enseigne la langue et la civilisation chinoises, avec des partenariats de bourses vers des universités chinoises.",
     image:
-      "https://readdy.ai/api/search-image?query=students practising chinese calligraphy in a language institute classroom, warm daylight, editorial photography&width=900&height=640&seq=mystud-form-confucius&orientation=landscape&nocache=false",
+      // Classroom with students in Baozhong Junior High School 20130308.jpg — Wikimedia Commons (CC BY 2.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Classroom_with_students_in_Baozhong_Junior_High_School_20130308.jpg/960px-Classroom_with_students_in_Baozhong_Junior_High_School_20130308.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "culture-islamique-ilaci",
@@ -627,7 +652,8 @@ export const formations = [
     description:
       "L'ILACI propose une formation en culture islamique, langue arabe et finance islamique, ouverte à toutes les séries de baccalauréat.",
     image:
-      "https://readdy.ai/api/search-image?query=students studying arabic manuscripts in a quiet institute reading room, warm soft light, editorial photography&width=900&height=640&seq=mystud-form-ilaci&orientation=landscape&nocache=false",
+      // I love reading! (18948829454).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/I_love_reading%21_%2818948829454%29.jpg/960px-I_love_reading%21_%2818948829454%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
 
   // --- Université de Parakou (UP) ----------------------------------------
@@ -653,7 +679,8 @@ export const formations = [
     description:
       "Première composante de l'Université de Parakou, la Faculté d'Agronomie forme aux productions végétales et à la protection des cultures, avec une ferme expérimentale de plusieurs hectares.",
     image:
-      "https://readdy.ai/api/search-image?query=agriculture students inspecting crop rows on an experimental farm in northern Benin, warm golden light, documentary photography&width=900&height=640&seq=mystud-form-fa-up&orientation=landscape&nocache=false",
+      // Farmer doing mixed cropping.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Farmer_doing_mixed_cropping.jpg/960px-Farmer_doing_mixed_cropping.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "medecine-humaine-fm-up",
@@ -677,7 +704,8 @@ export const formations = [
     description:
       "Cycle complet de formation médicale de la Faculté de Médecine de Parakou, au service du septentrion béninois, avec stages hospitaliers au CHU de Parakou.",
     image:
-      "https://readdy.ai/api/search-image?query=medical students examining x-ray images in a hospital training room, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-fm-up&orientation=landscape&nocache=false",
+      // Second year medical students from the UPNG School of Medicine and Health Science. Port Moresby General Hospital, PNG. (10720600104).jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Second_year_medical_students_from_the_UPNG_School_of_Medicine_and_Health_Science._Port_Moresby_General_Hospital%2C_PNG._%2810720600104%29.jpg/960px-Second_year_medical_students_from_the_UPNG_School_of_Medicine_and_Health_Science._Port_Moresby_General_Hospital%2C_PNG._%2810720600104%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "sante-publique-enatse",
@@ -701,7 +729,8 @@ export const formations = [
     description:
       "L'ENATSE forme les techniciens supérieurs chargés de la surveillance épidémiologique et de la santé publique dans le septentrion béninois.",
     image:
-      "https://readdy.ai/api/search-image?query=epidemiology technicians reviewing health surveillance data on a laptop, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-enatse&orientation=landscape&nocache=false",
+      // Community health worker in Togo (8329492567).jpg — Wikimedia Commons (Public domain)
+      "https://upload.wikimedia.org/wikipedia/commons/c/cd/Community_health_worker_in_Togo_%288329492567%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   },
   {
     id: "soins-infirmiers-ifsio",
@@ -725,7 +754,8 @@ export const formations = [
     description:
       "L'IFSIO forme les infirmiers diplômés d'État du septentrion béninois, admission sur concours avec épreuves de physique-chimie-technologie et sciences de la vie et de la terre.",
     image:
-      "https://readdy.ai/api/search-image?query=nursing students practising patient care in a training clinic, warm natural light, documentary photography&width=900&height=640&seq=mystud-form-ifsio&orientation=landscape&nocache=false",
+      // Specialized training strengthens LRMC care for critically-ill patients (6011495).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Specialized_training_strengthens_LRMC_care_for_critically-ill_patients_%286011495%29.jpg/960px-Specialized_training_strengthens_LRMC_care_for_critically-ill_patients_%286011495%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "informatique-gestion-iut",
@@ -749,7 +779,8 @@ export const formations = [
     description:
       "L'IUT de Parakou forme aux métiers de l'informatique de gestion, du développement de logiciels à l'administration de réseau.",
     image:
-      "https://readdy.ai/api/search-image?query=computer science students working on server racks in a university IT lab, warm indoor light, editorial photography&width=900&height=640&seq=mystud-form-iut-up&orientation=landscape&nocache=false",
+      // Information Computer Technology (ICT) Lab (4874426519).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Information_Computer_Technology_%28ICT%29_Lab_%284874426519%29.jpg/960px-Information_Computer_Technology_%28ICT%29_Lab_%284874426519%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "statistiques-appliquees-enspd",
@@ -773,7 +804,8 @@ export const formations = [
     description:
       "L'ENSPD, école rattachée à l'Université de Parakou, forme sur concours les statisticiens et planificateurs de l'administration béninoise.",
     image:
-      "https://readdy.ai/api/search-image?query=data analysis students reviewing statistical charts on large monitors in a modern computer room, warm light, clean editorial photography&width=900&height=640&seq=mystud-form-statistique-11&orientation=landscape&nocache=false",
+      // FEMA - 39205 - FEMA workers at a meeting in Puerto Rico.jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/FEMA_-_39205_-_FEMA_workers_at_a_meeting_in_Puerto_Rico.jpg/960px-FEMA_-_39205_-_FEMA_workers_at_a_meeting_in_Puerto_Rico.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "finance-comptabilite-faseg-up",
@@ -797,7 +829,8 @@ export const formations = [
     description:
       "La FASEG de Parakou forme aux métiers de la finance et de la comptabilité d'entreprise, avec des partenariats professionnels dans la région septentrionale.",
     image:
-      "https://readdy.ai/api/search-image?query=finance students analysing spreadsheets on laptops in a bright classroom, warm daylight, editorial photography&width=900&height=640&seq=mystud-form-faseg-up&orientation=landscape&nocache=false",
+      // FEMA - 39205 - FEMA workers at a meeting in Puerto Rico.jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/FEMA_-_39205_-_FEMA_workers_at_a_meeting_in_Puerto_Rico.jpg/960px-FEMA_-_39205_-_FEMA_workers_at_a_meeting_in_Puerto_Rico.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "droit-prive-fdsp-up",
@@ -821,7 +854,8 @@ export const formations = [
     description:
       "La FDSP de Parakou propose un cursus juridique complet orienté vers le droit privé, adapté aux besoins des collectivités du nord du pays.",
     image:
-      "https://readdy.ai/api/search-image?query=law students reviewing case files in a university courtroom simulation, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-fdsp-up&orientation=landscape&nocache=false",
+      // Law School Classes-24 (7116446131).jpg — Wikimedia Commons (CC BY 2.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Law_School_Classes-24_%287116446131%29.jpg/960px-Law_School_Classes-24_%287116446131%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "anglais-flash-up",
@@ -845,7 +879,8 @@ export const formations = [
     description:
       "La FLASH de Parakou développe les formations en langues, en lien avec les dynamiques sociales et territoriales du nord du Bénin.",
     image:
-      "https://readdy.ai/api/search-image?query=language students practising english conversation outdoors on a northern benin campus, warm golden light, documentary photography&width=900&height=640&seq=mystud-form-flash-up&orientation=landscape&nocache=false",
+      // Classroom in Goma, Eastern DRC (25765237378).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Classroom_in_Goma%2C_Eastern_DRC_%2825765237378%29.jpg/960px-Classroom_in_Goma%2C_Eastern_DRC_%2825765237378%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
 
   // --- Université Nationale des Sciences, Technologies, Ingénierie et Mathématiques (UNSTIM) ---
@@ -871,7 +906,8 @@ export const formations = [
     description:
       "L'ENSET forme sur concours les professeurs adjoints de génie civil de l'enseignement technique béninois.",
     image:
-      "https://readdy.ai/api/search-image?query=technical education students learning construction techniques in a workshop, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-enset&orientation=landscape&nocache=false",
+      // Engineers at the Construction Site 02.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Engineers_at_the_Construction_Site_02.jpg/960px-Engineers_at_the_Construction_Site_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "genie-civil-insti",
@@ -895,7 +931,8 @@ export const formations = [
     description:
       "L'INSTI forme des techniciens supérieurs en génie civil pour le bâtiment et les travaux publics, avec des chantiers-écoles encadrés.",
     image:
-      "https://readdy.ai/api/search-image?query=civil engineering students with helmets and technical drawings at a construction site in West Africa, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-genie-civil-02&orientation=landscape&nocache=false",
+      // Engineers at the Construction Site 02.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Engineers_at_the_Construction_Site_02.jpg/960px-Engineers_at_the_Construction_Site_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "sciences-ingenieur-inspei",
@@ -919,7 +956,8 @@ export const formations = [
     description:
       "Classes préparatoires intégrées de l'UNSTIM, admission sur concours, menant directement aux écoles d'ingénieurs du réseau après 3 ans.",
     image:
-      "https://readdy.ai/api/search-image?query=engineering preparatory students solving equations on a whiteboard, warm daylight, editorial photography&width=900&height=640&seq=mystud-form-inspei&orientation=landscape&nocache=false",
+      // Engineering Fabrication Laboratory (Student Shop) (11422729925).jpg — Wikimedia Commons (CC BY 2.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Engineering_Fabrication_Laboratory_%28Student_Shop%29_%2811422729925%29.jpg/960px-Engineering_Fabrication_Laboratory_%28Student_Shop%29_%2811422729925%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "mathematiques-informatique-ens-nati",
@@ -943,7 +981,8 @@ export const formations = [
     description:
       "L'ENS de Natitingou forme sur concours les professeurs adjoints de mathématiques-informatique du nord du Bénin.",
     image:
-      "https://readdy.ai/api/search-image?query=trainee teachers writing mathematics on a chalkboard in a northern benin school, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-ens-nati&orientation=landscape&nocache=false",
+      // Information Computer Technology (ICT) Lab (4874426519).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Information_Computer_Technology_%28ICT%29_Lab_%284874426519%29.jpg/960px-Information_Computer_Technology_%28ICT%29_Lab_%284874426519%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "biotechnologie-medicale-ensbba",
@@ -967,7 +1006,8 @@ export const formations = [
     description:
       "L'ENSBBA forme des techniciens supérieurs en biotechnologies appliquées à la santé, avec des laboratoires de diagnostic biomédical modernes.",
     image:
-      "https://readdy.ai/api/search-image?query=biomedical laboratory technicians analysing samples under a microscope, warm indoor light, editorial photography&width=900&height=640&seq=mystud-form-ensbba&orientation=landscape&nocache=false",
+      // Lab technician- Lady.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Lab_technician-_Lady.jpg/960px-Lab_technician-_Lady.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "mathematiques-informatiques-fast-nati",
@@ -991,7 +1031,8 @@ export const formations = [
     description:
       "La FAST de Natitingou forme aux mathématiques et à l'informatique fondamentales, avec des débouchés vers les écoles d'ingénieurs et l'enseignement.",
     image:
-      "https://readdy.ai/api/search-image?query=mathematics and computer science students in a lecture hall in northern Benin, warm daylight, editorial photography&width=900&height=640&seq=mystud-form-fast-nati&orientation=landscape&nocache=false",
+      // Laser experiment - Photonics Laboratory - Physics Department - Ateneo de Manila University.jpg — Wikimedia Commons (CC BY 2.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Laser_experiment_-_Photonics_Laboratory_-_Physics_Department_-_Ateneo_de_Manila_University.jpg/960px-Laser_experiment_-_Photonics_Laboratory_-_Physics_Department_-_Ateneo_de_Manila_University.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "froid-climatisation-ensgep",
@@ -1015,7 +1056,8 @@ export const formations = [
     description:
       "L'ENSGEP forme des techniciens supérieurs en froid et climatisation, un secteur en forte croissance au Bénin.",
     image:
-      "https://readdy.ai/api/search-image?query=hvac technician students servicing an air conditioning unit, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-ensgep&orientation=landscape&nocache=false",
+      // 379th ECES HVAC technicians combat rising temperatures (8502258).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/379th_ECES_HVAC_technicians_combat_rising_temperatures_%288502258%29.jpg/960px-379th_ECES_HVAC_technicians_combat_rising_temperatures_%288502258%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "genie-civil-enstp",
@@ -1039,7 +1081,8 @@ export const formations = [
     description:
       "L'ENSTP forme des techniciens supérieurs des travaux publics : routes, bâtiments, ouvrages d'art et assainissement.",
     image:
-      "https://readdy.ai/api/search-image?query=public works students surveying a road construction site, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-enstp&orientation=landscape&nocache=false",
+      // Engineers at the Construction Site 02.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Engineers_at_the_Construction_Site_02.jpg/960px-Engineers_at_the_Construction_Site_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
 
   // --- Université Nationale d'Agriculture (UNA) --------------------------
@@ -1065,7 +1108,8 @@ export const formations = [
     description:
       "L'École d'Aquaculture de l'UNA forme aux techniques de production piscicole et à la gestion d'exploitations aquacoles.",
     image:
-      "https://readdy.ai/api/search-image?query=aquaculture students inspecting fish ponds on an experimental farm, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-eaq&orientation=landscape&nocache=false",
+      // Fish farming.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Fish_farming.jpg/960px-Fish_farming.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "horticulture-ehaev",
@@ -1089,7 +1133,8 @@ export const formations = [
     description:
       "L'EHAEV forme aux métiers de l'horticulture et de l'aménagement paysager, publics et privés, avec des parcelles pédagogiques dédiées.",
     image:
-      "https://readdy.ai/api/search-image?query=horticulture students tending an ornamental garden nursery, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-ehaev&orientation=landscape&nocache=false",
+      // DSC 9537 A gardener tending a shallow reflecting pool beside modern terraced planters and decorative pots in a bright contemporary courtyard.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/DSC_9537_A_gardener_tending_a_shallow_reflecting_pool_beside_modern_terraced_planters_and_decorative_pots_in_a_bright_contemporary_courtyard.jpg/960px-DSC_9537_A_gardener_tending_a_shallow_reflecting_pool_beside_modern_terraced_planters_and_decorative_pots_in_a_bright_contemporary_courtyard.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "production-vegetale-semenciere-egpvs",
@@ -1113,7 +1158,8 @@ export const formations = [
     description:
       "L'EGPVS forme aux techniques de production végétale et de gestion des semences, de la parcelle à la certification.",
     image:
-      "https://readdy.ai/api/search-image?query=agronomy students inspecting seedlings in a seed production greenhouse, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-egpvs&orientation=landscape&nocache=false",
+      // Farmer doing mixed cropping.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Farmer_doing_mixed_cropping.jpg/960px-Farmer_doing_mixed_cropping.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "industrie-agroalimentaire-estctpa",
@@ -1137,7 +1183,8 @@ export const formations = [
     description:
       "L'ESTCTPA forme aux techniques de transformation et de conservation des produits agricoles, ainsi qu'à la nutrition humaine appliquée.",
     image:
-      "https://readdy.ai/api/search-image?query=food science students testing agricultural products in a processing laboratory, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-estctpa&orientation=landscape&nocache=false",
+      // Cassava processing., the local ways of processing cassava in Africa, Nigeria.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Cassava_processing.%2C_the_local_ways_of_processing_cassava_in_Africa%2C_Nigeria.jpg/960px-Cassava_processing.%2C_the_local_ways_of_processing_cassava_in_Africa%2C_Nigeria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "agroequipement-egr",
@@ -1161,7 +1208,8 @@ export const formations = [
     description:
       "L'École de Génie Rural forme aux équipements et à la mécanisation agricole, de la conception à la maintenance des machines.",
     image:
-      "https://readdy.ai/api/search-image?query=agricultural engineering students maintaining farm machinery in a workshop, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-egr&orientation=landscape&nocache=false",
+      // Agricultural Machinery.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Agricultural_Machinery.jpg/960px-Agricultural_Machinery.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "productions-animales-egese",
@@ -1185,7 +1233,8 @@ export const formations = [
     description:
       "L'EGESE forme à la gestion des exploitations d'élevage et à la santé animale, avec des fermes pédagogiques partenaires.",
     image:
-      "https://readdy.ai/api/search-image?query=animal husbandry students tending livestock on a teaching farm, warm daylight, documentary photography&width=900&height=640&seq=mystud-form-egese&orientation=landscape&nocache=false",
+      // Livestock at the grazing area.jpg — Wikimedia Commons (CC BY-SA 4.0)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Livestock_at_the_grazing_area.jpg/960px-Livestock_at_the_grazing_area.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "gestion-exploitations-eapa",
@@ -1209,7 +1258,8 @@ export const formations = [
     description:
       "L'EAPA forme à la gestion et au financement des exploitations agricoles et des entreprises agro-industrielles.",
     image:
-      "https://readdy.ai/api/search-image?query=agribusiness students discussing a farm management plan around a table, warm daylight, editorial photography&width=900&height=640&seq=mystud-form-eapa&orientation=landscape&nocache=false",
+      // FEMA - 39205 - FEMA workers at a meeting in Puerto Rico.jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/FEMA_-_39205_-_FEMA_workers_at_a_meeting_in_Puerto_Rico.jpg/960px-FEMA_-_39205_-_FEMA_workers_at_a_meeting_in_Puerto_Rico.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "sociologie-rurale-esrva",
@@ -1233,7 +1283,8 @@ export const formations = [
     description:
       "L'ESRVA forme des conseillers agricoles capables d'accompagner les organisations paysannes et les projets de développement rural.",
     image:
-      "https://readdy.ai/api/search-image?query=agricultural extension worker discussing crop techniques with local farmers, warm golden light, documentary photography&width=900&height=640&seq=mystud-form-esrva&orientation=landscape&nocache=false",
+      // USAID in Zambia (35219849273).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/USAID_in_Zambia_%2835219849273%29.jpg/960px-USAID_in_Zambia_%2835219849273%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
   {
     id: "foresterie-tropicale-efort",
@@ -1257,6 +1308,7 @@ export const formations = [
     description:
       "L'École de Foresterie Tropicale forme aux métiers de la gestion durable des forêts, des aires protégées et de la faune sauvage.",
     image:
-      "https://readdy.ai/api/search-image?query=forestry students measuring trees in a tropical forest reserve, warm dappled light, documentary photography&width=900&height=640&seq=mystud-form-efort&orientation=landscape&nocache=false",
+      // A scientist using an angle gauge to measure trees during a forest survey (151af77f-f979-43bd-aecc-097745c3595b).jpg — Wikimedia Commons (Public domain)
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/A_scientist_using_an_angle_gauge_to_measure_trees_during_a_forest_survey_%28151af77f-f979-43bd-aecc-097745c3595b%29.jpg/960px-A_scientist_using_an_angle_gauge_to_measure_trees_during_a_forest_survey_%28151af77f-f979-43bd-aecc-097745c3595b%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   },
 ];
